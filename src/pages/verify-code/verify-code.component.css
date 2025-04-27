@@ -1,0 +1,32 @@
+.subTitle {
+  color: #a7a5a5;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.formButton {
+  color: #f6f6f6;
+  padding: 8px;
+  border-radius: 15px;
+  min-height: 55px;
+  font-weight: 500;
+  background-color: #2e2e2e;
+}
+
+.digit-input {
+  width: 55px;
+  height: 55px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  border: solid 1px #d7777b;
+  background: none;
+}
+
+@media only screen and (max-width: 400px) {
+  .digit-input {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}

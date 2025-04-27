@@ -1,0 +1,26 @@
+.formInput {
+  padding: 8px;
+  border-radius: 15px;
+  min-height: 55px;
+  padding-left: 50px;
+  background: none;
+}
+.inputIcon {
+  position: absolute;
+  top: 18px;
+  left: 15px;
+}
+.subTitle {
+  color: #a7a5a5;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.formButton {
+  color: #f6f6f6;
+  padding: 8px;
+  border-radius: 15px;
+  min-height: 55px;
+  font-weight: 500;
+  background-color: #2e2e2e;
+}

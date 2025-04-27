@@ -1,0 +1,23 @@
+body {
+  background-image: url("./assets/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: "POPPINS";
+  font-size: 15px;
+  color: #2e2e2e;
+  background-color: #f6f6f6;
+}
+
+p,
+h1 {
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  color: #bf272d;
+  font-weight: 600;
+}

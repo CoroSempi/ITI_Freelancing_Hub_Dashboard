@@ -1,0 +1,90 @@
+<div
+  class="col-12 d-flex flex-column justify-content-center align-items-center"
+>
+  <div
+    class="col-10 col-sm-6 col-md-5 col-lg-4 d-flex flex-column justify-content-center align-items-center gap-3"
+    style="max-width: 400px"
+  >
+    <div
+      class="d-flex flex-column justify-content-center align-items-center gap-0"
+    >
+      <h1 class="text-center fs-2">Enter Verification Code</h1>
+    </div>
+
+    <div class="col-12 d-flex flex-row justify-content-between a">
+      <input
+        class="digit-input"
+        #input1
+        type="tel"
+        maxlength="1"
+        [(ngModel)]="code[0]"
+        (input)="moveFocus($event, 0, input2)"
+      />
+      <input
+        class="digit-input"
+        #input2
+        type="tel"
+        maxlength="1"
+        [(ngModel)]="code[1]"
+        (input)="moveFocus($event, 1, input3)"
+      />
+      <input
+        class="digit-input"
+        #input3
+        type="tel"
+        maxlength="1"
+        [(ngModel)]="code[2]"
+        (input)="moveFocus($event, 2, input4)"
+      />
+      <input
+        class="digit-input"
+        #input4
+        type="tel"
+        maxlength="1"
+        [(ngModel)]="code[3]"
+        (input)="moveFocus($event, 3, input5)"
+      />
+      <input
+        class="digit-input"
+        #input5
+        type="tel"
+        maxlength="1"
+        [(ngModel)]="code[4]"
+        (input)="moveFocus($event, 4, input6)"
+      />
+      <input
+        class="digit-input"
+        #input6
+        type="tel"
+        maxlength="1"
+        [(ngModel)]="code[5]"
+      />
+    </div>
+
+    <p class="subTitle col-12">
+      We have sent an email to your registered email address with a verification
+      code.
+    </p>
+
+    <!-- Submit Button -->
+    <button
+    (click)="sendCode()"
+      class="formButton btn btn-primary col-12"
+      type="submit"
+      [disabled]="loading || code.join('').length < 6"
+    >
+      @if(loading){
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      }@else{Verify}
+    </button>
+    <!-- Back to Sign in Page -->
+    <div class="col-12 d-flex justify-content-end align-content-center">
+      <a routerLink="/signIn">Back to Sign in Page</a>
+    </div>
+    <div style="font-size: 13px; color: #bf272d; text-align: left; width: 100%">
+      {{ error }}
+    </div>
+  </div>
+</div>

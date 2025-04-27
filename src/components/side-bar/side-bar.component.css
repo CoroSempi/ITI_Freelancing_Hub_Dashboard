@@ -1,0 +1,28 @@
+.sidebar {
+  width: 100%;
+  background-color: #f8f9fa;
+  position: relative;
+  height: 100vh;
+}
+
+.nav-link {
+  color: #2e2e2e;
+  padding: 15px 20px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  background-color: #e9ecef;
+}
+
+.nav-link.active {
+  background-color: #fed9da;
+  color: rgb(9, 9, 9);
+}
+
+.iti {
+  font-size: 25px;
+  font-weight: 600;
+  color: #bf272d;
+}

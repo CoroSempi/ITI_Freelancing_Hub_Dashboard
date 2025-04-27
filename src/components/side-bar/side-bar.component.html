@@ -1,0 +1,128 @@
+<div class="sidebar d-none d-md-block">
+  <div class="m-4">
+    <p class="iti">ITI Freelancing Hub</p>
+    <p style="color: #2e2e2e; font-weight: 500; opacity: 0.7">Dashboard</p>
+  </div>
+
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/requests" routerLinkActive="active">
+        Requests
+      </a>
+    </li>
+
+    <hr />
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/tracks" routerLinkActive="active">
+        Tracks
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/notifications" routerLinkActive="active">
+        Notifications
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/chats" routerLinkActive="active">
+        Chats
+      </a>
+    </li>
+
+    <hr />
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+        Settings
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link text-danger"
+        routerLink="/signIn"
+        routerLinkActive="active"
+      >
+        LogOut
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- Button to toggle sidebar -->
+
+<!-- Collapsible Sidebar -->
+<div
+  style="width: 350px"
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+>
+  <div class="sidebar">
+    <div class="m-4">
+      <p class="iti">ITI Freelancing Hub</p>
+      <p style="color: #2e2e2e; font-weight: 500; opacity: 0.7">Dashboard</p>
+    </div>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/requests" routerLinkActive="active">
+          Requests
+        </a>
+      </li>
+      <hr />
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/tracks" routerLinkActive="active">
+          Tracks
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/notifications"
+          routerLinkActive="active"
+        >
+          Notifications
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/chats" routerLinkActive="active">
+          Chats
+        </a>
+      </li>
+      <hr />
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+          Settings
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link text-danger"
+          routerLink="/signIn"
+          routerLinkActive="active"
+        >
+          LogOut
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

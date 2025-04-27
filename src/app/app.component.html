@@ -1,0 +1,22 @@
+@if (!authPages()) {
+
+<button
+  class="d-md-none"
+  style="border: none; background: none; margin: 25px"
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasExample"
+  aria-controls="offcanvasExample"
+>
+  <img src="list.svg" alt="" />
+</button>
+<div class="d-flex gap-2">
+  <app-side-bar></app-side-bar>
+  <div style="margin: 25px">
+    <router-outlet />
+  </div>
+</div>
+
+}@else{
+<router-outlet />
+}

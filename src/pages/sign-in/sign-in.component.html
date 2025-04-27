@@ -1,0 +1,108 @@
+<div
+  class="col-12 d-flex flex-column justify-content-center align-items-center"
+>
+  <form
+    class="col-10 col-sm-6 col-md-5 col-lg-4 d-flex flex-column justify-content-center align-items-center gap-3"
+    style="max-width: 400px"
+    [formGroup]="signInForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div
+      class="col-12 d-flex flex-column justify-content-center align-items-center gap-0"
+    >
+      <h1 class="fs-1">Sign In</h1>
+      <p class="subTitle">Craft Your Career, Shape Your Path</p>
+    </div>
+
+    <!-- Email Input -->
+    <div class="position-relative col-12">
+      <img src="./email.svg" class="inputIcon" />
+      <input
+        placeholder="Email"
+        class="formInput form-control"
+        [ngClass]="{
+          'is-invalid':
+            signInForm.get('email')?.invalid && signInForm.get('email')?.touched
+        }"
+        id="email"
+        formControlName="email"
+        type="email"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="signInForm.get('email')?.errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="signInForm.get('email')?.errors?.['email']">
+          Invalid email format.
+        </div>
+      </div>
+    </div>
+
+    <!-- Password Input -->
+    <div class="position-relative col-12">
+      <img
+        style="top: 10px"
+        height="34px"
+        class="inputIcon"
+        src="./key.svg"
+        alt=""
+      />
+
+      <button
+        (click)="passwordToggle()"
+        style="right: 25px; top: 10px; background: none; border: none"
+        class="position-absolute d-flex justify-content-center align-items-center"
+        type="button"
+      >
+        <img height="34px" src="./eye.svg" />
+      </button>
+
+      <input
+        placeholder="Password"
+        class="formInput form-control"
+        [ngClass]="{
+          'is-invalid':
+            signInForm.get('password')?.invalid &&
+            signInForm.get('password')?.touched
+        }"
+        id="password"
+        formControlName="password"
+        [type]="isPass ? 'password' : 'text'"
+      />
+      <div class="invalid-feedback">
+        <div *ngIf="signInForm.get('password')?.errors?.['required']">
+          Password is required.
+        </div>
+        <div *ngIf="signInForm.get('password')?.errors?.['minlength']">
+          Minimum length is 6.
+        </div>
+      </div>
+    </div>
+
+    <!-- Remember me and Forgot password -->
+    <div class="col-12 d-flex justify-content-between align-content-center">
+      <div class="d-flex justify-content-center align-items-center gap-2">
+        <input type="checkbox" name="Remember" />
+        <p>Remember me</p>
+      </div>
+      <a routerLink="/forgetPassword">Forget your password?</a>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      class="formButton col-12 btn btn-primary"
+      type="submit"
+      [disabled]="signInForm.invalid || loading"
+    >
+      @if (loading) {
+
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      }@else{ SIGN IN }
+    </button>
+    <div class="col-12" style="color: #bf272d; text-align: left">
+      {{ error }}
+    </div>
+  </form>
+</div>

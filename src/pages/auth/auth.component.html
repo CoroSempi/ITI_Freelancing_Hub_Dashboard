@@ -1,0 +1,28 @@
+<div
+  style="height: 100vh"
+  class="flex-column position-relative d-flex justify-content-center align-items-center"
+>
+  <!-- Logo -->
+  <div class="col-4 col-md-2 position-absolute" style="left: 30px; top: 30px">
+    <img class="col-6 col-md-10 col-lg-5" src="./logoDash.png" alt="Logo" />
+  </div>
+
+  <!-- Top Warning -->
+  <div
+    class="position-absolute d-none d-md-flex justify-content-center align-items-center gap-2"
+    style="top: 30px; right: 30px"
+  >
+    <img src="./Vector.svg" alt="" />
+    <p class="fs-6 2 fw-semibold mb-0">Freelancing Hub Dashboard</p>
+  </div>
+
+  <div class="col-12">
+    <router-outlet />
+  </div>
+</div>
+<p
+  style="bottom: 30px; width: 100%; text-align: center; color: #d7777b"
+  class="position-absolute fw-medium"
+>
+  © 2025 ITI Freelancing Hub. All rights reserved.
+</p>
