@@ -1,0 +1,29 @@
+<input
+  (input)="searching()"
+  (blur)="out()"
+  [(ngModel)]="keyword"
+  type="text"
+  id="search-input"
+  placeholder="Search for users ..."
+  class="form-control col-12"
+  autocomplete="off"
+/>
+<span class="search-icon">
+  <img src="./search.svg" alt="" />
+</span>
+
+<div
+  [ngStyle]="{ display: keyword.length > 0 ? 'flex' : 'none' }"
+  class="results-display"
+>
+  @if (users.length>0) { @for (item of users; track $index) {
+  <span (click)="toUserPage(item._id)">{{ item.fullName }}</span>
+  } }@else {
+  <div
+    style="min-height: 200px"
+    class="col-12 d-flex justify-content-center align-items-center"
+  >
+    <p class="text-secondary">No users !</p>
+  </div>
+  }
+</div>

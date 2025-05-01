@@ -43,6 +43,7 @@ export class SignInComponent implements OnInit {
           this.cd.detectChanges();
 
           localStorage.setItem('AccessToken', response.AccessToken);
+          localStorage.setItem('adminData', JSON.stringify(response.adminData));
           this.error = '';
           this.nav.navigate(['/home']);
         },
@@ -50,7 +51,6 @@ export class SignInComponent implements OnInit {
           this.loading = false;
           this.error = error.error.message;
           this.cd.detectChanges();
-          console.error('Error:', error.error.message);
         }
       );
     }

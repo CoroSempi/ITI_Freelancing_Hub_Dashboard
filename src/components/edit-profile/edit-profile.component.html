@@ -1,0 +1,49 @@
+<!-- Collapsible Change Password -->
+<div
+  style="width: 350px; max-width: 80%"
+  class="offcanvas offcanvas-start test"
+  tabindex="-1"
+  id="editProfile"
+>
+  <div class="sidebar m-3 mt-4">
+    <p class="fs-4 fw-semibold">Edit My Profile</p>
+    <br />
+
+    <div
+      class="position-relative col-12 d-flex justify-content-center align-items-center"
+    >
+      @if(avatar){ @if(avatar.length <20){
+      <img
+        class="avatar"
+        src="https://as2.ftcdn.net/v2/jpg/03/31/69/91/1000_F_331699188_lRpvqxO5QRtwOM05gR50ImaaJgBx68vi.jpg"
+        alt=""
+      />
+      }@else {
+      <img class="avatar" [src]="avatar" alt="" />
+      } }
+
+      <label class="custom-upload">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+        <img width="60%" src="./pen.svg" alt="" />
+      </label>
+    </div>
+    <br />
+
+    <!-- Submit Button -->
+    <button
+      (click)="onSubmit()"
+      [disabled]="isSubmitDisabled()"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      class="formButton col-12 btn btn-primary"
+      type="submit"
+    >
+      @if (loading) {
+
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      }@else{ Submit }
+    </button>
+  </div>
+</div>

@@ -4,22 +4,31 @@ import { ForgetPasswordComponent } from '../pages/forget-password/forget-passwor
 import { VerifyCodeComponent } from '../pages/verify-code/verify-code.component';
 import { ResetPasswordComponent } from '../pages/reset-password/reset-password.component';
 import { HomeComponent } from '../pages/home/home.component';
-import { HomeGuard } from '../guards/home-guard.guard';
+import { AuthGuard } from '../guards/auth.guard';
 import { AuthComponent } from '../pages/auth/auth.component';
 import { RequestsComponent } from '../pages/requests/requests.component';
 import { TracksComponent } from '../pages/tracks/tracks.component';
 import { NotificationsComponent } from '../pages/notifications/notifications.component';
-import { SettingsComponent } from '../pages/settings/settings.component';
 import { ChatsComponent } from '../pages/chats/chats.component';
+import { NotFoundComponent } from '../pages/notFound/notFound.component';
+import { StudentChatComponent } from '../pages/student-chat/student-chat.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [HomeGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'requests', component: RequestsComponent },
-  { path: 'tracks', component: TracksComponent },
-  { path: 'notifications', component: NotificationsComponent },
-  { path: 'chats', component: ChatsComponent },
-  { path: 'settings', component: SettingsComponent },
+  { path: 'requests', component: RequestsComponent, canActivate: [AuthGuard] },
+  { path: 'tracks', component: TracksComponent, canActivate: [AuthGuard] },
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'chats', component: ChatsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'studentChat/:id',
+    component: StudentChatComponent,
+    canActivate: [AuthGuard],
+  },
 
   {
     path: '',
@@ -31,4 +40,6 @@ export const routes: Routes = [
       { path: 'resetPassword', component: ResetPasswordComponent },
     ],
   },
+  { path: 'notFound', component: NotFoundComponent },
+  { path: '**', redirectTo: '/notFound' },
 ];

@@ -1,0 +1,69 @@
+@if(chat){
+<!-- TagName -->
+<div class="d-flex justify-content-start align-items-center gap-2">
+  <img (click)="back()" class="backButton" src="./rec.svg" alt="" />
+  <p class="fs-5 fw-medium">
+    {{ chat.fullName.split(" ")[0] + " " + chat.fullName.split(" ")[1] }}
+  </p>
+  <img class="y d-none d-xl-block" src="./sep2.svg" alt="" />
+  <p class="fs-5 text-secondary d-none d-xl-block">{{ chat.track }}</p>
+</div>
+
+<br />
+
+<div
+  style="min-height: 80vh"
+  class="r d-flex flex-column justify-content-between algi"
+>
+  <!-- ChatRoom -->
+  <div style="max-height: 75vh" class="overflow-auto d-flex flex-column gap-2">
+    @for (item of chat.ChatRoom ; track $index) { @if(item.received){
+    <!-- Sended Message -->
+    <div class="col-12 d-flex flex-column gap-1 align-items-end">
+      <div class="sendedMessage">
+        {{ item.content }}
+      </div>
+      <span class="text-secondary">{{ formatStamp(item.timestamp) }}</span>
+    </div>
+    } @else {
+    <!-- Recived Message -->
+    <div class="d-flex flex-column gap-1 align-items-start">
+      <div class="recivedMessage sendedMessage">
+        {{ item.content }}
+      </div>
+
+      <span class="text-secondary">{{ formatStamp(item.timestamp) }}</span>
+    </div>
+    }}
+  </div>
+
+  <br />
+  <div
+    class="col-12 d-flex gap-1 gap-lg-3 justify-content-between align-items-center"
+  >
+    <input
+      type="text"
+      [(ngModel)]="message"
+      placeholder="write about something"
+      class="custom-input"
+    />
+
+    <button
+      (click)="sendMessage()"
+      [disabled]="message.length <= 0"
+      class="sendButton formButton"
+    >
+      <img src="./send.svg" width="25px" alt="" />
+    </button>
+  </div>
+</div>
+}@else{
+<div
+  style="min-height: 200px"
+  class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+>
+  <div class="spinner-border text-danger" role="status"></div>
+  <p class="text-secondary">Loading</p>
+</div>
+
+}

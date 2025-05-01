@@ -59,8 +59,7 @@ export class VerifyCodeComponent {
   sendCode(): void {
     const codeString = this.code.join('');
     this.loading = true;
-    console.log(codeString);
-    console.log(this.email);
+
     this.cd.detectChanges();
     this.authService
       .verifyCode({ code: codeString, email: this.email })
@@ -69,13 +68,11 @@ export class VerifyCodeComponent {
           this.loading = false;
           this.cd.detectChanges();
 
-          console.log(response);
           localStorage.setItem('AccessToken', response.AccessToken);
           this.error = '';
           this.nav.navigate(['/resetPassword']);
         },
         (error) => {
-          console.log(error);
           this.loading = false;
           this.error = error.error.message;
           this.cd.detectChanges();
@@ -87,7 +84,6 @@ export class VerifyCodeComponent {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.email = params['email'];
-      console.log('Received code:', this.email);
     });
   }
 }

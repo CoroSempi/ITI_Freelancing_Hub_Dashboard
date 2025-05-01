@@ -1,0 +1,13 @@
+.test {
+  color: #2e2e2e;
+  font-size: 12px;
+}
+
+li  {
+  cursor: pointer;
+
+}
+
+li:hover {
+  opacity: 0.6;
+}

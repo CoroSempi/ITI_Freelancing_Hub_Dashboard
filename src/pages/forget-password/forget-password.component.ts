@@ -31,8 +31,6 @@ export class ForgetPasswordComponent implements OnInit {
 
   onSubmit(): void {
     this.loading = true;
-    console.log(this.loading);
-    console.log('pressed');
 
     if (this.forgetPassword.valid) {
       this.authService

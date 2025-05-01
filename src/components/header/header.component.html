@@ -1,3 +1,33 @@
-<p>
-  header works!
-</p>
+<header
+  class="col-12 d-flex gap-3 mb-4 align-items-center justify-content-between pe-xl-4"
+>
+  <!-- right -->
+  <div
+    class="d-flex justify-content-start align-items-center gap-4 col-12 col-xl-6"
+  >
+    <img class="d-none d-md-block" src="./itiheader.svg" alt="" />
+    <div class="search-container position-relative flex-grow-1">
+      <app-search-bar></app-search-bar>
+    </div>
+  </div>
+
+  <!-- left -->
+  <div class="d-none d-xl-flex justify-content-center align-items-center gap-4">
+    <p class="branch">{{ branch }} Branch</p>
+    <div class="dropdown">
+      <button
+        class="btn dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        {{ admin }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a (click)="logout()" class="dropdown-item" href="/signIn">logOut</a>
+      </div>
+    </div>
+  </div>
+</header>

@@ -21,3 +21,9 @@ a {
   color: #bf272d;
   font-weight: 600;
 }
+
+@media only screen and (max-width: 400px) {
+  body {
+    font-size: 13px;
+  }
+}

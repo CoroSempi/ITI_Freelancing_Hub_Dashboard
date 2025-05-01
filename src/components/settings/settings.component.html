@@ -1,0 +1,37 @@
+<!-- Collapsible Settings -->
+<div
+  style="width: 350px; max-width: 80%"
+  class="offcanvas offcanvas-start test"
+  tabindex="-1"
+  id="settings"
+>
+  <div class="sidebar m-3 mt-4">
+    <p class="fs-4 fw-semibold">Settings</p>
+    <br />
+
+    <p class="fs-6 fw-medium text-secondary">Account Settings</p>
+    <br />
+
+    <ul class="nav flex-column gap-4">
+      <li
+        data-bs-toggle="offcanvas"
+        data-bs-target="#editProfile"
+        aria-controls="editProfile"
+        class="nav-item d-flex justify-content-start align-items-center gap-2"
+      >
+        <img src="user.svg" alt="" />
+        <p class="fs-6 fw-semibold">Edit my Profile</p>
+      </li>
+
+      <li
+        data-bs-toggle="offcanvas"
+        data-bs-target="#changePassword"
+        aria-controls="changePassword"
+        class="nav-item d-flex justify-content-start align-items-center gap-2"
+      >
+        <img src="keySettings.svg" alt="" />
+        <p class="fs-6 fw-semibold">Change Password</p>
+      </li>
+    </ul>
+  </div>
+</div>

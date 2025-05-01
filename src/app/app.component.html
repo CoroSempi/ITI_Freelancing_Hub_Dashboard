@@ -1,8 +1,8 @@
 @if (!authPages()) {
 
 <button
-  class="d-md-none"
-  style="border: none; background: none; margin: 25px"
+  class="d-lg-none"
+  style="border: none; background: none; margin: 20px 10px"
   type="button"
   data-bs-toggle="offcanvas"
   data-bs-target="#offcanvasExample"
@@ -10,10 +10,18 @@
 >
   <img src="list.svg" alt="" />
 </button>
-<div class="d-flex gap-2">
+
+<div class="d-flex gap-lg-2">
   <app-side-bar></app-side-bar>
-  <div style="margin: 25px">
+  <app-settings></app-settings>
+  <app-edit-profile></app-edit-profile>
+  <app-change-password></app-change-password>
+  <div class="m-1 m-lg-2 mt-lg-4 position-relative" style="flex: 1">
+    <app-header></app-header>
     <router-outlet />
+    <p style="text-align: center; color: #d7777b" class="fw-medium col-12 mt-5">
+      © 2025 ITI Freelancing Hub. All rights reserved.
+    </p>
   </div>
 </div>
 

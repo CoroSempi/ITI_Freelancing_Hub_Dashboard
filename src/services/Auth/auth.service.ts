@@ -56,7 +56,6 @@ export class AuthService {
       authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
     });
 
-
     return this.http.post<any>(
       this.baseUrl + '/resetPassword',
       { newPassword },
@@ -64,5 +63,19 @@ export class AuthService {
         headers,
       }
     );
+  }
+
+  changePassword(body: {
+    currentPassword: string;
+    newPassword: string;
+  }): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
+    });
+
+    return this.http.patch<any>(this.baseUrl + '/changePassword', body, {
+      headers,
+    });
   }
 }

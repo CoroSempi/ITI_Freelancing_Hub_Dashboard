@@ -5,7 +5,6 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   ValidationErrors,
   Validators,
@@ -59,11 +58,8 @@ export class ResetPasswordComponent implements OnInit {
             this.loading = false;
             this.cd.detectChanges();
             this.error = '';
-            console.log(response);
-            // this.nav.navigate(['/']);
           },
           (error) => {
-            console.log(error);
             this.loading = false;
             this.error = error.error.message;
             this.cd.detectChanges();

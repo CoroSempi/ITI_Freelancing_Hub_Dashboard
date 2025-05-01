@@ -1,0 +1,64 @@
+.backButton {
+  cursor: pointer;
+}
+
+.recivedMessage,
+.sendedMessage {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  min-width: 60%;
+  max-width: 80%;
+  padding: 15px;
+}
+
+.sendedMessage {
+  background-color: #bf272d;
+  color: white;
+  border-radius: 10px;
+}
+
+.recivedMessage {
+  background-color: #a6a5a5;
+  color: white;
+  border-radius: 10px;
+}
+
+.custom-input {
+  border: 1px solid #a7a5a5;
+  border-radius: 15px;
+  color: #a7a5a5;
+  padding: 0.5rem 1rem;
+  outline: none;
+  flex: 1;
+  background: none;
+  min-height: 55px;
+  color: inherit;
+}
+
+.custom-input::placeholder {
+  color: #a7a5a5;
+}
+
+.sendButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2e2e2e;
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  border: none;
+}
+
+.sendButton:disabled {
+  background-color: #949494;
+}
+
+@media only screen and (max-width: 400px) {
+  .recivedMessage,
+  .sendedMessage {
+    max-width: 100%;
+  }
+}
