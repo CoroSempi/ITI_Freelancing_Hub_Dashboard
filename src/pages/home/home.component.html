@@ -1,1 +1,35 @@
-<p>home works!</p>
+<div class="container">
+
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-2">
+    <div class="tag">.</div>
+    <p class="fs-5 fw-semibold">Round Analytics</p>
+  </div>
+
+  <!-- Cards or Loader -->
+  <ng-container *ngIf="!isLoadingAnalytics; else analyticsLoader">
+    <Cards [cards]="cards"></Cards>
+  </ng-container>
+  <ng-template #analyticsLoader>
+    <div class="text-center my-4">
+      <div class="spinner-border text-danger" role="status"></div>
+    </div>
+  </ng-template>
+
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-2">
+    <div class="tag">.</div>
+    <p class="fs-5 fw-semibold">Latest Requests</p>
+  </div>
+
+  <!-- Jobs or Loader -->
+  <ng-container *ngIf="!isLoadingJobs; else jobsLoader">
+    <app-show-jobs [jobs]="jobs"></app-show-jobs>
+  </ng-container>
+  <ng-template #jobsLoader>
+    <div class="text-center my-4">
+      <div class="spinner-border text-danger" role="status"></div>
+    </div>
+  </ng-template>
+
+</div>

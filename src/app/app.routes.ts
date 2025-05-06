@@ -14,6 +14,7 @@ import { StudentChatComponent } from '../pages/student-chat/student-chat.compone
 import { TracksLayoutComponent } from '../pages/tracks/tracks-layout/tracks-layout.component';
 import { AddnewComponent } from '../pages/tracks/addnew/addnew.component';
 import { TracksAllComponent } from '../pages/tracks/trackall/tracks.component';
+import { JobDetailsComponent } from '../pages/job-details/job-details.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -28,7 +29,11 @@ export const routes: Routes = [
       { path: 'all', component: TracksAllComponent },
     ] , canActivate: [AuthGuard]
   }, 
-  
+  {
+    path: 'job-details/:id',
+    component: JobDetailsComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'notifications',
     component: NotificationsComponent,

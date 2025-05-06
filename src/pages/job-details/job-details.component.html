@@ -1,0 +1,195 @@
+<!-- Spinner while loading -->
+<div *ngIf="isLoading" class="text-center my-5">
+  <div class="spinner-border text-dark" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- Actual content shown only after loading -->
+<div *ngIf="!isLoading && job" class="container">
+  <div class="topdata mb-2">
+    <img (click)="back()" src="Rectangle 7.svg" />
+    <strong>{{ job.jobTitle }}</strong>
+    <strong>|</strong>
+    <span>
+      <span>{{ job.jobType }}</span>
+    </span>
+    <p class="status {{ job.verified ? 'accepted' : '' }}">
+      {{ job.verified ? "Accept" : "Pending" }}
+    </p>
+  </div>
+  <br />
+
+  <div class="item mb-3" *ngIf="job.studentName">
+    <img src="avatar.svg" alt="photo" />
+    <div class="text">
+      <strong>{{ getFirstTwoNames(job.studentName) }}</strong>
+      <span (click)="openChat()" class="message">Send Message</span>
+    </div>
+  </div>
+
+  <div class="data">
+    <p class="mb-3" style="color: #a7a5a5">{{ job.jobDescription }}</p>
+
+    <p *ngIf="!job.companytName && job.teamMembers.length > 0">
+      <strong>Contributors : </strong>
+      <span *ngFor="let std of job.teamMembers; let i = index">
+        {{ std.studentName }}<span *ngIf="i < job.teamMembers.length - 1">, </span>
+      </span>
+    </p>
+
+    <div *ngIf="job.platform">
+      <p><strong>Client Name : </strong><span>{{ job.clientName }}</span></p>
+      <p><strong>Client Country : </strong><span>{{ job.clientCountry }}</span></p>
+      <p><strong>Platform : </strong><span>{{ job.platform }}</span></p>
+      <p>
+        <strong>Student Profile : </strong>
+        <a href="{{ job.studentProfile }}" class="spanName">{{ job.platform }}</a>
+        <img src="ms.svg" class="m-2" />
+      </p>
+    </div>
+
+    <div *ngIf="job.companytName">
+      <p><strong>Company Name : </strong><span>{{ job.companytName }}</span></p>
+      <p><strong>Company Country : </strong><span>{{ job.companyCountry }}</span></p>
+      <p><strong>Company Contact : </strong><span>{{ job.companyContact }}</span></p>
+    </div>
+
+    <p *ngIf="!job.companytName">
+      <strong>Client Profile on The Platform : </strong>
+      <a href="{{ job.clientProfile }}" class="spanName">{{ job.platform }}</a>
+      <img src="ms.svg" class="m-2" />
+    </p>
+
+    <p *ngIf="job.proofOfWork">
+      <strong>Proof of work : </strong>
+      <a class="spanName" href="{{ job.proofOfWork }}">Drive Link</a>
+      <img src="ms.svg" class="m-2" />
+    </p>
+
+    <div class="details">
+      <p>
+        <img src="date.svg" />
+        <strong> Start : </strong> {{ formatDate(job.startDate) }}
+        <span *ngIf="job.endDate" style="color: black">
+          <img src="date.svg" />
+          <strong style="color: black"> Completion : </strong>
+          {{ formatDate(job.endDate) }}
+        </span>
+      </p>
+
+      <p>
+        <img src="usd.svg" />
+        {{ job.costInUSD || job.paymentInUSD }}
+        <img src="EGP.svg" />
+        {{ job.costInEGP || job.paymentInEGP }}
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-dark custom-btn"
+      *ngIf="job?.verified === false"
+      (click)="acceptJob()"
+    >
+      Accept
+    </button>
+    <button
+      type="button"
+      (click)="deleteJob(job._id)"
+      class="btn btn-outline-danger custom-btn"
+    >
+      Delete
+    </button>
+
+    <p *ngIf="job.comments?.length > 0">Comments</p>
+
+    <div *ngIf="job.comments?.length > 0" class="overflow-container">
+      <div
+        class="comments"
+        *ngFor="let comment of job.comments"
+        style="margin-bottom: 10px"
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+          "
+        >
+          <strong>Admin</strong>
+          <span
+            style="cursor: pointer"
+            (click)="deleteComment(comment._id)"
+            class="text-danger fw-semibold"
+            >Delete</span
+          >
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+          "
+        >
+          <p
+            style="
+              color: gray;
+              font-size: 13px;
+              max-width: 70%;
+              overflow: hidden;
+            "
+          >
+            {{ comment.content }}
+          </p>
+          <div class="d-flex gap-3">
+            <span
+              class="d-flex align-items-center gap-1"
+              style="color: gray; font-size: 13px"
+            >
+              {{ comment.rate }}
+              <img width="15px" src="heart.svg" alt="" />
+            </span>
+            <span style="color: gray; font-size: 13px">
+              {{ formatDate(comment.date) }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p *ngIf="job.comments?.length === 0" style="color: gray">
+      No comments yet.
+    </p>
+
+    <div class="AddCommint">
+      <input
+        type="text"
+        class="form-control comment-input"
+        placeholder="Enter comment"
+        [(ngModel)]="commentText"
+      />
+
+      <div class="rate-group">
+        <input
+          type="number"
+          step="0.5"
+          min="0"
+          max="5"
+          class="form-control rate-input"
+          placeholder="Enter rate"
+          [(ngModel)]="rate"
+        />
+        <button
+          type="button"
+          class="btn btn-dark custom-btn"
+          (click)="addComment()"
+        >
+          Add Comment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

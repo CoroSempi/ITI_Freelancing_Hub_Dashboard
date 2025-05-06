@@ -1,0 +1,35 @@
+.tag {
+  width: 10px;
+  height: 40px;
+  color: #bf272d;
+  background-color: #bf272d;
+  border-radius: 20px 0px 20px 0px;
+}
+.allRequests {
+  width: 70px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+  background-color: #e0e0e0;
+  color: #5c6480;
+  margin-left: 10px;
+}
+.penddingRequest,
+.aprovedRequest {
+  width: 120px;
+  height: 40px;
+  margin-left: 2;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+  background-color: #e0e0e0;
+  color: #5c6480;
+  margin-left: 10px;
+}
+
+button.active {
+  background-color: #e4b2b3 !important;
+  color: #bf272d !important;
+  font-weight: bold;
+}
