@@ -1,0 +1,26 @@
+.form-select {
+    background-color: #BF272D; color: white;
+ overflow: hidden;  
+  justify-content: space-between;
+   align-items: center;
+    display: inline-flex" 
+   }
+  
+.form-control{
+
+
+    width: 200px; height: 40px; padding-left: 10px; padding-right: 10px;  color: #A7A5A5;}
+
+
+    .fw-world{
+       width: 500px; color: #A7A5A5; font-size: 14px; font-family: Poppins; font-weight: 400; word-wrap: break-word"
+    }
+
+
+
+
+
+    option{
+    background-color: white;
+    color: gray;
+    } 
