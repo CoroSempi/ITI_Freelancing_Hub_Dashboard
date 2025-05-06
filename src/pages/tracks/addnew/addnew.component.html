@@ -1,0 +1,77 @@
+<div class="col-12 d-flex flex-column align-items-start justify-content-start">
+  <form [formGroup]="addTrackForm" (ngSubmit)="onSubmit()">
+    <div class="column mt-4 g-3">
+      <div class="fw-normal text-dark mb-3">Track Name</div>
+      <select
+        class="form-select  "
+        id="trackName"
+        formControlName="trackName"
+      >
+        <option value="" disabled>Select a track</option>
+        @for (item of allTracks; track $index) {
+        <option value="{{ item }}">
+          {{ item }}
+        </option>
+        }
+      </select>
+
+      <div class="fw-normal  mt-3 mb-3">Track Date</div>
+      <input
+        type="date"
+        class="form-control"
+        id="startDate"
+        formControlName="startDate"
+        placeholder="Enter track date"
+      />
+
+      <div class="fw-600 text-dark mt-3 fs-15 ">Students Data</div>
+      <div class="d-flex align-items-center gap-3 mt-3">
+    
+         <div class="fw-normal text-secondary ">
+          No Uploaded File
+         </div>
+ <input
+type="file"
+id="sheet"
+(change)="onFileSelected($event)"
+formControlName="sheet"
+accept=".xlsx"
+style="display: none"
+/>
+
+
+<label for="sheet" style="cursor: pointer;">
+<img
+  src="upload.svg"
+  alt="upload"
+  class="img-fluid"
+  style="width: 20px; height: 20px;"
+/>
+</label>
+
+      </div>
+
+      <div class="d-flex align-items-center gap-3 mt-3">
+        <div class="fw-normal text-secondary mt-3 ">
+          Please ensure that you upload the required Excel file in the <br> .xlsx
+          format to complete your submission correctly.
+        </div>
+      </div>
+      <div class=" formButton d-flex align-items-center gap-3 mt-3">
+        <button
+        class="formButton btn bg-dark text-white fw-600 fill-rounded-4"
+        [disabled]="addTrackForm.invalid || loading"
+      >
+        @if (loading) {
+  
+        <div class="spinner-border text-danger" role="status">
+          <span id="submit" class="sr-only">Loading...</span>
+        </div>
+        }@else{ Submit }
+      </button>
+      
+     
+      </div>
+    </div>
+  </form>
+</div>

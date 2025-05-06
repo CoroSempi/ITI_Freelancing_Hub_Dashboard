@@ -7,17 +7,28 @@ import { HomeComponent } from '../pages/home/home.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { AuthComponent } from '../pages/auth/auth.component';
 import { RequestsComponent } from '../pages/requests/requests.component';
-import { TracksComponent } from '../pages/tracks/tracks.component';
-import { NotificationsComponent } from '../pages/notifications/notifications.component';
+ import { NotificationsComponent } from '../pages/notifications/notifications.component';
 import { ChatsComponent } from '../pages/chats/chats.component';
 import { NotFoundComponent } from '../pages/notFound/notFound.component';
 import { StudentChatComponent } from '../pages/student-chat/student-chat.component';
+import { TracksLayoutComponent } from '../pages/tracks/tracks-layout/tracks-layout.component';
+import { AddnewComponent } from '../pages/tracks/addnew/addnew.component';
+import { TracksAllComponent } from '../pages/tracks/trackall/tracks.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'requests', component: RequestsComponent, canActivate: [AuthGuard] },
-  { path: 'tracks', component: TracksComponent, canActivate: [AuthGuard] },
+  {
+    path: 'tracks',
+    component: TracksLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'all', pathMatch: 'full' },
+      { path: 'add', component: AddnewComponent },
+      { path: 'all', component: TracksAllComponent },
+    ] , canActivate: [AuthGuard]
+  }, 
+  
   {
     path: 'notifications',
     component: NotificationsComponent,
