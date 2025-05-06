@@ -1,0 +1,31 @@
+.card {
+    min-height: 150px;
+    border: none;
+    border-radius: 15px;
+    background-color: #fff;  
+    opacity: 0.7;  
+    
+}
+
+  .card-title {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+ 
+  .text-secondary {
+    color: #6c757d !important; 
+  }
+  
+  .text-dark {
+    color: #212529 !important; 
+  }
+  
+  .text-muted {
+    color: #888 !important; 
+    font-size: 12px;
+  }
+  
