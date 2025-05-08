@@ -1,3 +1,16 @@
-<p>
-  notifications works!
-</p>
+<div class="notification-wrapper">
+  <div class="red-shape"></div>
+  <span class="notification-text">Notifications</span>
+</div>
+<!-- /////////////////////////////////////////////////////////////////// -->
+<div
+  class="notification-wrapper-buttons d-flex"
+  style="gap: 20px; margin-top: 20px">
+  <a routerLink="spesificUsers"  routerLinkActive="active"><button class="btn specificUsers">specific Users</button></a>  
+  <a routerLink="broadCasting"  routerLinkActive="active"><button class="btn Broadcasting">Broadcasting</button></a>
+</div>
+<!-- <button  class="btn specificUsers">specific Users</button>
+<button class="btn Broadcasting">Broadcasting</button> -->
+<!-- //////////////////////////////////////////////////////////////////////// -->
+
+<router-outlet></router-outlet>

@@ -1,0 +1,49 @@
+<div class="track-wrapper">
+  <div class="triangle-left"></div>
+  <span class="track-text">Front End and Cross Platform Mobile Development</span>
+</div>
+
+<div class="d-flex" style="gap: 20px; margin-top: 20px">
+  <button (click)="handleFilter(false)" class="btn allTracks">All</button>
+  <button (click)="handleFilter(true)" class="btn targetachivers">
+    Target Achivers
+  </button>
+</div>
+
+@if (isLoading) {
+<div class="loader-container">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <p class="mt-2">Loading students data...</p>
+</div>
+}
+
+@if (!isLoading) {
+  @for (student of students; track $index) {
+  <div class="profile-badge">
+    <div class="profile-content">
+      <div class="user-info">
+        <span class="name">{{ student.fullName }}</span>
+        <span class="divider"></span>
+        <span class="role">{{ student.trackName }}</span>
+        <span class="divider"></span>
+        <span class="email"> {{ student.email }} </span>
+        <!-- <div>{{ student._id }}</div> -->
+        <span class="divider"></span>
+        @if (student.target) {
+        <span class="status-badge pass">pass</span>
+        }@else {
+        <span class="status-badge NotYet">Not Yet</span>
+        }
+      </div>
+      <div class="user-status">
+        <!-- <button  class="edit-button">Edit</button> -->
+        <button class="edit-button" [routerLink]="['/editUser', student._id]">
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+}

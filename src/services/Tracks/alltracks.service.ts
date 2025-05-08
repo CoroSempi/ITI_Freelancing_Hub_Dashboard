@@ -25,4 +25,15 @@ export class TracksService {
     });
     return this.http.post(`${this.baseUrl}/addTrack`, track, { headers });
   }
+
+  getStudentsTrack(id: String): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
+    });
+
+    return this.http.get<any>(this.baseUrl+ "/Track/" + id, {
+      headers,
+    });
+  }
 }

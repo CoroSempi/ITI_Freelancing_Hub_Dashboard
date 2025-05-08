@@ -1,0 +1,152 @@
+.profile-badge {
+  width: 1350px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.profile-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.name {
+  font-weight: 600;
+  color: #333333;
+  font-size: 16px;
+}
+
+.divider {
+  width: 2px;
+  height: 20px;
+  background-color: #bf272d;
+  display: inline-block;
+  border-radius: 1px;
+}
+
+.role {
+  color: #999999;
+  font-size: 15px;
+}
+
+.email {
+  color: #666666;
+  font-size: 15px;
+}
+
+.user-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status-badge.pass {
+  background-color: #e6f7e6;
+  color: #28a745;
+}
+
+.status-badge.NotYet {
+  background-color: #fde9e4;
+  color: #bf272d;
+}
+
+
+.edit-button {
+  background: none;
+  border: none;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.edit-button:hover {
+  background-color: #f0f0f0;
+}
+
+.triangle-left {
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 20px solid #bf272d;
+  border-bottom: 13px solid transparent;
+}
+
+.track-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  width: fit-content;
+  gap: 5px;
+}
+
+.track-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  color: #000000;
+}
+
+.allTracks,
+.targetachivers {
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+}
+
+.allTracks {
+  background-color: #e0e0e0;
+  color: #5c6480;
+  width: 52px;
+}
+
+.targetachivers {
+  background-color: #e0e0e0;
+  color: #5c6480;
+  width: 158px;
+}
+/* loader */
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1000;
+}
+
+.spinner-border {
+  width: 4rem;
+  height: 4rem;
+  border-width: 0.35em;
+}
+
+.spinner-border.text-primary {
+  color: #BF272D !important; 
+}

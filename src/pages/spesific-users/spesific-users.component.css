@@ -1,0 +1,132 @@
+.specific-users-container {
+  padding: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.search-input {
+  padding: 12px 45px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  width: 100%;
+}
+
+.search-results {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.search-result-item {
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+  background-color: #f9f9f9;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  color: #000;
+  font-weight: 500;
+}
+
+.track-name {
+  color: #999;
+}
+
+.divider {
+  width: 2px;
+  height: 20px;
+  background-color: #BF272D;
+  margin: 0 12px;
+  border-radius: 1px;
+}
+
+.instruction-text {
+  color: #A7A5A5;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.empty-selection {
+  color: #A7A5A5;
+  font-style: italic;
+}
+
+.selected-users-container {
+  margin-top: 15px;
+}
+
+.select-spesific-user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.remove {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #BF272D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.remove:hover {
+  background-color: #b31919;
+}
+
+.remove i {
+  color: white;
+  font-size: 16px;
+}
+
+.write-something {
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  flex-grow: 1;
+}
+
+.submit {
+  background-color: #BF272D;
+  color: white;
+  font-weight: 500;
+  width: 151px;
+  height: 50px;
+  border-radius: 15px;
+  transition: background-color 0.2s;
+}
+
+.submit:hover:not([disabled]) {
+  background-color: #b31919;
+}
+
+.submit:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
