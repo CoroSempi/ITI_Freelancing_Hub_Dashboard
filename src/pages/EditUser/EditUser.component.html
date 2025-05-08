@@ -1,0 +1,60 @@
+<div class="track-wrapper">
+    <div class="triangle-left"></div>
+    <span class="track-text">{{ fullName }}</span>
+    <span class="divider"></span>
+    <span class="name">{{ trackName }}</span>
+  </div>
+  
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row mt-5">
+      <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input type="text" class="form-control" formControlName="fullName" />
+        </div>
+        <div class="col-md-6">
+          <label for="grade" class="form-label">G.Grade</label>
+          <input type="text" class="form-control" formControlName="grade" />
+        </div>
+      </div>
+  
+      <div class="row mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="col-md-6">
+              <label for="faculty" class="form-label">Faculty</label>
+              <input type="text" class="form-control" formControlName="faculty">
+          </div>
+      </div>
+  
+      <div class="row mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+              <label for="mobile" class="form-label">Mobile</label>
+              <input type="tel" class="form-control" formControlName="phone">
+          </div>
+          <div class="col-md-6">
+              <label for="university" class="form-label">University</label>
+              <input type="text" class="form-control" formControlName="university">
+          </div>
+      </div>
+  
+      <div class="row mb-3">
+          <div class="col-md-6 mb-3 mb-md-0">
+              <label for="personalID" class="form-label">Personal ID</label>
+              <input type="text" class="form-control" formControlName="personalID">
+          </div>
+          <div class="col-md-6 mb-3 mb-md-0">
+            <label for="track" class="form-label">Track</label>
+            <select class="form-select track-select" formControlName="track" style="background-color: #BF272D;color: aliceblue;">
+              <option>{{ trackName }}</option>
+              <option>Front End and Cross Platform Mobile Development</option>
+              <option>Backend Development</option>
+              <option>Full Stack Development</option>
+              <option>UI/UX Design</option>
+            </select>
+          </div>
+      </div>
+  
+      <button type="submit" class="btn btn-dark  update_btn" >Update</button>
+    </form>

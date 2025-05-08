@@ -1,0 +1,55 @@
+.write-something{
+  border: 1px solid #ababab;
+  background-color: transparent;
+}
+
+.write-something,.search-input::placeholder{
+  color: #817878;
+  font-size: 15px;
+}
+
+.write-something{
+  width: 1310px;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.dropdown-toggle::after {
+  margin-left: auto;
+}
+
+.dropdown-toggle {
+  border-radius: 10px;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.alert {
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}

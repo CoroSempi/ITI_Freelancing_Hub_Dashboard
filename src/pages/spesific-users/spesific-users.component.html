@@ -1,0 +1,129 @@
+<!-- <div style="position: relative; margin-top: 30px">
+  <i class="fas fa-search" style="position: absolute;top: 50%;left: 16px;transform: translateY(-50%);color: #b31919;font-size: 20px;"></i>
+  <input
+    class="form-control search-input"
+    type="text"
+    placeholder="looking for specific user"
+  />
+</div>
+  <p class="mt-4" style="color: #A7A5A5; font-family: Poppins;">Before sending any notifications to users, ensure that the message is free of spelling errors and <br>
+     utilizes clear, professional language. Double-check for proper grammar, tone, and formatting.<br> Remember, notifications represent our platform, so they should be polished and easy to<br> 
+    understand to maintain our credibility and user trust.</p>
+   
+  <div class="select-spesific-user" >
+     <div style="display: flex; align-items: center;">
+        <strong style="color: #000;">Seif El-Islam</strong>
+        <div style="
+          width: 2px;
+          height: 20px;
+          background-color: #BF272D;
+          margin: 0 12px;
+          border-radius: 1px;
+        "></div>
+        <span style="color: #999;">Frontend & Cross-Platform</span>
+      </div>
+      <div class="remove" >
+        <i class="fas fa-times" style="color: white; font-size: 20px;"></i>
+      </div>
+    </div>
+   
+    <div class="d-flex gap-3 mt-4 ">
+      <input
+      class="form-control  write-something"
+      type="text"
+      placeholder="Write about something ..."
+    />
+      <button class="btn submit" style="margin-left: 20px" type="submit" style="width: 151px; height: 50px; border-radius: 15px;">Submit</button>
+  
+    </div>
+     -->
+
+
+
+     <div style="position: relative; margin-top: 30px">
+      <i class="fas fa-search" style="position: absolute;top: 50%;left: 16px;transform: translateY(-50%);color: #b31919;font-size: 20px;"></i>
+      <input
+        class="form-control search-input"
+        type="text"
+        placeholder="looking for specific user"
+        [formControl]="searchInput"
+      />
+    </div>
+    
+    <!-- Search Results -->
+    <div *ngIf="searchResults.length > 0" class="search-results mt-2">
+      <div 
+        *ngFor="let user of searchResults" 
+        class="search-result-item p-2"
+        (click)="selectUser(user)"
+      >
+        <div style="display: flex; align-items: center;">
+          <strong style="color: #000;">{{ user.fullName }}</strong>
+          <div style="
+            width: 2px;
+            height: 20px;
+            background-color: #BF272D;
+            margin: 0 12px;
+            border-radius: 1px;
+          "></div>
+          <span style="color: #999;">{{ user.trackName }}</span>
+        </div>
+      </div>
+    </div>
+    
+  
+    <div *ngIf="isLoading" class="text-center mt-2">
+      <div class="spinner-border text-danger" role="status" style="width: 1rem; height: 1rem;">
+        <span class="visually-hidden">Loading please wait</span>
+      </div>
+      <span class="ms-2" style="color: #A7A5A5;">Searching.</span>
+    </div>
+    
+   
+    <p class="mt-4" style="color: #A7A5A5; font-family: Poppins;">Before sending any notifications to users, ensure that the message is free of spelling errors and <br>
+       utilizes clear, professional language. Double-check for proper grammar, tone, and formatting.<br> Remember, notifications represent our platform, so they should be polished and easy to<br> 
+      understand to maintain our credibility and user trust.</p>
+    
+    
+    <div *ngIf="selectedUsers.length === 0" class="mt-5" style="color: #BF272D;font-weight:bold ;">
+      No users selected. Search and select users.
+    </div>
+    
+    <div 
+      *ngFor="let user of selectedUsers; let i = index" 
+      class="select-spesific-user"
+    >
+      <div style="display: flex; align-items: center;">
+        <strong style="color: #000;">{{ user.fullName }}</strong>
+        <div style="
+          width: 2px;
+          height: 20px;
+          background-color: #BF272D;
+          margin: 0 12px;
+          border-radius: 1px;
+        "></div>
+        <span style="color: #999;">{{ user.trackName }}</span>
+      </div>
+      <div class="remove" (click)="removeUser(i)">
+        <i class="fas fa-times" style="color: white; font-size: 20px;"></i>
+      </div>
+    </div>
+    
+   
+    <div class="d-flex gap-3 mt-4">
+      <input
+        class="form-control write-something"
+        type="text"
+        placeholder="send message for selected student"
+        [formControl]="messageInput"
+      />
+      <button 
+        class="btn submit" 
+        style="margin-left: 20px; width: 151px; height: 50px; border-radius: 15px;"
+        [disabled]="!messageInput.value || selectedUsers.length === 0 || isSubmitting"
+        (click)="submitNotification()"
+      >
+        <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        Submit
+      </button>
+    </div>

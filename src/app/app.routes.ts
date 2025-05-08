@@ -7,7 +7,6 @@ import { HomeComponent } from '../pages/home/home.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { AuthComponent } from '../pages/auth/auth.component';
 import { RequestsComponent } from '../pages/requests/requests.component';
- import { NotificationsComponent } from '../pages/notifications/notifications.component';
 import { ChatsComponent } from '../pages/chats/chats.component';
 import { NotFoundComponent } from '../pages/notFound/notFound.component';
 import { StudentChatComponent } from '../pages/student-chat/student-chat.component';
@@ -15,11 +14,29 @@ import { TracksLayoutComponent } from '../pages/tracks/tracks-layout/tracks-layo
 import { AddnewComponent } from '../pages/tracks/addnew/addnew.component';
 import { TracksAllComponent } from '../pages/tracks/trackall/tracks.component';
 import { JobDetailsComponent } from '../pages/job-details/job-details.component';
+import { TrackDetailsComponent } from '../pages/trackDetails/trackDetails.component';
+import { SpesificUsersComponent } from '../pages/spesific-users/spesific-users.component';
+import { BroadCastingComponent } from '../pages/broad-casting/broad-casting.component';
+import { EditUserComponent } from '../pages/EditUser/EditUser.component';
+import { NotificationsComponent } from '../pages/notifications/notifications.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'requests', component: RequestsComponent, canActivate: [AuthGuard] },
+  { path: 'tracks/:id', component: TrackDetailsComponent, canActivate: [AuthGuard]  },
+
+  { path: 'editUser/:id', component: EditUserComponent, canActivate: [AuthGuard]  },
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+    children: [
+      { path: '', redirectTo: 'spesificUsers', pathMatch: 'full' },
+      { path: 'spesificUsers', component: SpesificUsersComponent },
+      { path: 'broadCasting', component: BroadCastingComponent },
+    ], canActivate: [AuthGuard] 
+  },
+
   {
     path: 'tracks',
     component: TracksLayoutComponent,
