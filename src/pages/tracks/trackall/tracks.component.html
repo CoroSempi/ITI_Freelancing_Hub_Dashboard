@@ -1,40 +1,54 @@
-<div class="col-12 width: 500, padding: 15, position: 'relative', background: 'white', boxShadow: '0px 5px 10px rgba(46, 46, 46, 0.20)', overflow: 'hidden', justifyContent: 'flex-start', alignItems: 'center', gap: 20, display: 'inline-flex'">
-  <div class="row mt-4 g-3">
-    <div *ngFor="let track of tracks" class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-body position-relative">
-          <h5 
-            class="card-title fw-bold text-dark" >
-            
-            {{ track.trackName }}
-          </h5>
-          <p class="startDate">
-            {{ track.startDate }}
-          </p>
-          <p class=" numberOfStudent mb-1">
-            <span>
-              Number of students:
-            </span>
-            <span>
-              {{ track.numberOfStudent }}
-            </span>
-          </p>
-          <p class="taegetAchievers mb-1">
-            <span>
-              Target Achievers:
-            </span>
-            <span class="numberOfAchievers"
-              >
-              {{ track.numberOfAchievers }}
-            </span>
-          </p>
-          <div 
-            class="  percentage  fs-1 position-absolute" 
-            [ngClass]="track.percentage >= 50 ? 'text-success' : 'text-danger'">
-            {{ track.percentage }}%
-          </div>
-        </div>
+@if(!tracks) {
+<div
+  style="min-height: 200px"
+  class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+>
+  <div class="spinner-border text-danger" role="status"></div>
+  <p class="text-secondary">Loading</p>
+</div>
+} @else if(tracks.length == 0) {
+<div
+  style="min-height: 200px"
+  class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+>
+  <p class="text-secondary">No Tracks Yet</p>
+</div>
+} @else {
+
+<div class="col-12">
+  <div class="row mt-4 gap-3 p-2">
+    <div
+      style="height: 170px; cursor: pointer"
+      (click)="goToTrack(track._id, track.trackName)"
+      *ngFor="let track of tracks"
+      class="col-md-5 flex-grow-1 flex-md-grow-0 card shadow-sm d-flex flex-column justify-content-between p-3 align-items-start "
+    >
+      <h5 class="fs-6 fw-semibold text-dark">
+        {{ track.trackName }}
+      </h5>
+      <p class="startDate">
+        {{ track.startDate }}
+      </p>
+      <p class="numberOfStudents mt-3">
+        Number of students:
+        <span>
+          {{ track.numberOfStudent }}
+        </span>
+      </p>
+      <p class="taegetAchievers mb-1">
+        Target Achievers:
+        <span>
+          {{ track.numberOfAchievers }}
+        </span>
+      </p>
+      <div
+        class="percentage position-absolute"
+        [ngClass]="track.percentage >= 50 ? 'text-success' : 'text-danger'"
+      >
+        {{ track.percentage }}%
       </div>
     </div>
   </div>
 </div>
+
+}

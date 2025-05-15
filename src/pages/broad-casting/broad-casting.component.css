@@ -1,16 +1,16 @@
-.write-something{
+.write-something {
   border: 1px solid #ababab;
   background-color: transparent;
 }
 
-.write-something,.search-input::placeholder{
+.write-something,
+.search-input::placeholder {
   color: #817878;
   font-size: 15px;
 }
 
-.write-something{
-  width: 1310px;
-  height: 50px;
+.write-something {
+  height: 55px;
   border-radius: 15px;
 }
 
@@ -28,8 +28,8 @@
 }
 
 .dropdown-menu {
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 button:disabled {
@@ -52,4 +52,8 @@ button:disabled {
   background-color: #f8d7da;
   border-color: #f5c6cb;
   color: #721c24;
+}
+
+li {
+  break-after: always;
 }

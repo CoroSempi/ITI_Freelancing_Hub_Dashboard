@@ -26,13 +26,23 @@ export class TracksService {
     return this.http.post(`${this.baseUrl}/addTrack`, track, { headers });
   }
 
+  deleteTrack(id: String): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
+    });
+    console.log(this.baseUrl + '/Track/' + id);
+    return this.http.delete<any>(this.baseUrl + '/Track/' + id, {
+      headers,
+    });
+  }
+
   getStudentsTrack(id: String): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
     });
-
-    return this.http.get<any>(this.baseUrl+ "/Track/" + id, {
+    return this.http.get<any>(this.baseUrl + '/Track/' + id, {
       headers,
     });
   }

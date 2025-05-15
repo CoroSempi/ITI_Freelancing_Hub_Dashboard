@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AllJobsService } from '../../services/AllJobs/all-jobs.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { JobsService } from '../../services/Jobs/jobs.service';
 
 @Component({
   selector: 'app-job-details',
@@ -20,16 +20,19 @@ export class JobDetailsComponent implements OnInit {
   chat: any;
   commentText: string = '';
   rate: number = 0;
-  isLoading: boolean = true; // ✅ Add loading state
+  isLoading: boolean = true;
+  avatar: string = '';
+  firstTime: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
-    private allJobsService: AllJobsService,
+    private allJobsService: JobsService,
     private datePipe: DatePipe,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.firstTime = false;
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.returnTo = history.state?.returnTo || '';
     this.getJobDetails();
@@ -47,9 +50,13 @@ export class JobDetailsComponent implements OnInit {
   getJobDetails(): void {
     if (!this.id) return;
 
-    this.isLoading = true; // ✅ Start loading
+    if (this.firstTime) {
+      this.isLoading = true;
+      console.log('Loading job details...');
+    }
     this.allJobsService.getJobById(this.id).subscribe(
       (response) => {
+        this.avatar = response.avatar;
         this.job =
           response.directJob || response.remoteJob || response.platformJob;
         this.isLoading = false; // ✅ Stop loading

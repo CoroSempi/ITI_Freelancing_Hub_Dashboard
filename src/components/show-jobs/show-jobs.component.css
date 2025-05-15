@@ -1,19 +1,16 @@
 .job-container {
   padding: 10px;
-  margin-left: 5px;
   margin-bottom: 15px;
   position: relative;
-  background-color: #fff;
+  background-color: #ffffff;
   overflow: hidden;
-  min-width: 100%;
-  /* width: 100%;    
-    display: block; */
 }
 
 h2 {
   font-size: 24px;
   margin-bottom: 10px;
 }
+
 h6 {
   color: #d7777b;
 }
@@ -24,21 +21,18 @@ h6 {
 }
 
 .description {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 15px;
+  color: #a7a5a5;
+  margin-bottom: 6px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.6;
 }
 
-.details p {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.details span {
-  color: #000;
+.details {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0px;
 }
 
 .contributor {
@@ -60,10 +54,10 @@ h6 {
   color: #bf272d;
 }
 .accepted-job {
-  border-left: 8px solid #44b40d;
+  border-left: 7px solid #44b40d;
 }
 .pending-job {
-  border-left: 8px solid #888;
+  border-left: 7px solid #888;
 }
 
 .check-icon {
@@ -86,19 +80,19 @@ h6 {
   padding-left: 10px;
 }
 
-.view-image {
-  width: 120px;
-  height: 120px;
-  /* background-image: url('../../assets/images/accept.svg');  */
-  background-size: cover;
-  background-position: center;
+.job-status-img {
   position: absolute;
-
+  bottom: -20px;
   right: -20px;
-  bottom: -200px;
+  height: 100%;
+}
 
-  /* right: -20px;
-  bottom: -30px;
-  z-index: -1;
-  opacity: 0.08; */
+@media (max-width: 768px) {
+  .job-status-img {
+    height: 80%;
+  }
+
+  .description {
+    font-size: 13px;
+  }
 }

@@ -19,14 +19,39 @@ import { SpesificUsersComponent } from '../pages/spesific-users/spesific-users.c
 import { BroadCastingComponent } from '../pages/broad-casting/broad-casting.component';
 import { EditUserComponent } from '../pages/EditUser/EditUser.component';
 import { NotificationsComponent } from '../pages/notifications/notifications.component';
+import { CertificatesComponent } from '../pages/certificates/certificates.component';
+import { CertificateDetailsComponent } from '../pages/certificate-details/certificate-details.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'requests', component: RequestsComponent, canActivate: [AuthGuard] },
-  { path: 'tracks/:id', component: TrackDetailsComponent, canActivate: [AuthGuard]  },
+  {
+    path: 'job-details/:id',
+    component: JobDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: `certificates`,
+    component: CertificatesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: `certificate-details/:id`,
+    component: CertificateDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'track/:id/:trackName',
+    component: TrackDetailsComponent,
+    canActivate: [AuthGuard],
+  },
 
-  { path: 'editUser/:id', component: EditUserComponent, canActivate: [AuthGuard]  },
+  {
+    path: 'editUser/:id',
+    component: EditUserComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'notifications',
     component: NotificationsComponent,
@@ -34,7 +59,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'spesificUsers', pathMatch: 'full' },
       { path: 'spesificUsers', component: SpesificUsersComponent },
       { path: 'broadCasting', component: BroadCastingComponent },
-    ], canActivate: [AuthGuard] 
+    ],
+    canActivate: [AuthGuard],
   },
 
   {
@@ -44,11 +70,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'all', pathMatch: 'full' },
       { path: 'add', component: AddnewComponent },
       { path: 'all', component: TracksAllComponent },
-    ] , canActivate: [AuthGuard]
-  }, 
-  {
-    path: 'job-details/:id',
-    component: JobDetailsComponent,
+    ],
     canActivate: [AuthGuard],
   },
   {

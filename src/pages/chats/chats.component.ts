@@ -15,18 +15,23 @@ export class ChatsComponent implements OnInit {
   allChats: iChats[] = [];
   filterdChats: iChats[] = [];
   chats!: iChats[];
+
   unread: boolean = false;
   constructor(private chatsService: ChatsService, private nav: Router) {}
+
   ngOnInit(): void {
     this.chatsService.getAllChats().subscribe((response) => {
       this.chats = response;
-
+      let counter = 0;
       this.chats.forEach((std) => {
         this.allChats.push(std);
         if (this.getUnreadCount(std)) {
           this.filterdChats.push(std);
+          counter += 1;
         }
       });
+
+      this.chatsService.setUnseenRequests(counter);
     });
   }
 
@@ -70,6 +75,7 @@ export class ChatsComponent implements OnInit {
     const year = date.getFullYear();
     return `${hours}:${minutes} ${day} ${month} ${year}`;
   }
+
   handleFliter(bool: boolean) {
     this.unread = bool;
     if (bool) {

@@ -1,17 +1,9 @@
-.notification-wrapper {
-  display: flex;
-  align-items: center;
-  padding: 8px 16px;
-  width: fit-content;
-  gap: 5px;
-}
-
-.red-shape {
-  width: 7px;
-  height: 35px;
-  background-color: #BF272D;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+.tag {
+  width: 10px;
+  height: 40px;
+  color: #bf272d;
+  background-color: #bf272d;
+  border-radius: 20px 0px 20px 0px;
 }
 
 .notification-text {
@@ -28,14 +20,8 @@
   border-radius: 20px;
   border: none;
   font-size: 15px;
-  background-color: #E0E0E0;
+  background-color: #e0e0e0;
   color: #5c6480;
-}
-
-a.active .btn {
-  background-color: #e4b2b3;
-  color: #BF272D;
-  font-weight: bold;
 }
 
 .search-input,
@@ -70,7 +56,7 @@ a.active .btn {
   height: 60px;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 16px 20px;
   display: flex;
   align-items: center;
@@ -81,7 +67,7 @@ a.active .btn {
 .remove {
   width: 30px;
   height: 30px;
-  background-color: #BF272D;
+  background-color: #bf272d;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -94,5 +80,23 @@ a.active .btn {
   height: 50px;
   border-radius: 15px;
   color: white;
-  background-color: #2E2E2E;
+  background-color: #2e2e2e;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bf272d;
+  padding: 5px 20px;
+  border-radius: 20px;
+  color: #787777;
+  background-color: rgba(224, 224, 224, 0.6);
+  cursor: pointer;
+}
+
+.actived {
+  color: #bf272d;
+  font-weight: 650;
+  background-color: rgba(191, 39, 45, 0.3);
 }

@@ -17,8 +17,35 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/requests" routerLinkActive="active">
-          Requests
+        <a
+          class="nav-link nav-item d-flex justify-content-between align-items-center"
+          routerLink="/requests"
+          routerLinkActive="active"
+        >
+          Requests @if(unseenRequests > 0) {
+
+          <span
+            style="margin-right: 15px; border-radius: 50%"
+            class="badge text-bg-danger"
+            >{{ unseenRequests }}</span
+          >
+          }
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          data-bs-dismiss="offcanvas"
+          class="nav-link nav-item d-flex justify-content-between align-items-center"
+          routerLink="/certificates"
+          routerLinkActive="active"
+        >
+          Certificates @if(unseenCertificates > 0) {
+          <span
+            style="margin-right: 15px; border-radius: 50%"
+            class="badge text-bg-danger"
+            >{{ unseenCertificates }}</span
+          >}
         </a>
       </li>
 
@@ -46,9 +73,11 @@
         >
           Chats @if (unreadChat > 0) {
 
-          <span style="margin-right: 15px" class="badge text-bg-danger">{{
-            unreadChat
-          }}</span>
+          <span
+            style="margin-right: 15px; border-radius: 50%"
+            class="badge text-bg-danger"
+            >{{ unreadChat }}</span
+          >
           }
         </a>
       </li>
@@ -105,13 +134,35 @@
       <li class="nav-item">
         <a
           data-bs-dismiss="offcanvas"
-          class="nav-link"
+          class="nav-link nav-item d-flex justify-content-between align-items-center"
+          routerLink="/certificates"
+          routerLinkActive="active"
+        >
+          Certificates @if(unseenCertificates > 0) {
+          <span
+            style="margin-right: 15px; border-radius: 50%"
+            class="badge text-bg-danger"
+            >{{ unseenCertificates }}</span
+          >}
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a
+          data-bs-dismiss="offcanvas"
+          class="nav-link nav-item d-flex justify-content-between align-items-center"
           routerLink="/requests"
           routerLinkActive="active"
         >
-          Requests
+          Requests @if(unseenRequests > 0) {
+          <span
+            style="margin-right: 15px; border-radius: 50%"
+            class="badge text-bg-danger"
+            >{{ unseenRequests }}</span
+          >}
         </a>
       </li>
+
       <hr />
       <li class="nav-item">
         <a
@@ -142,9 +193,11 @@
         >
           Chats @if (unreadChat > 0) {
 
-          <span style="margin-right: 15px" class="badge text-bg-danger">{{
-            unreadChat
-          }}</span>
+          <span
+            style="margin-right: 15px; border-radius: 50%"
+            class="badge text-bg-danger"
+            >{{ unreadChat }}</span
+          >
           }
         </a>
       </li>

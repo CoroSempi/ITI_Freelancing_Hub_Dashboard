@@ -1,15 +1,23 @@
 @if (!authPages()) {
 
-<button
-  class="d-lg-none"
-  style="border: none; background: none; margin: 20px 10px"
-  type="button"
-  data-bs-toggle="offcanvas"
-  data-bs-target="#offcanvasExample"
-  aria-controls="offcanvasExample"
->
-  <img src="list.svg" alt="" />
-</button>
+<div class="d-flex justify-content-between p-3 align-items-center d-lg-none">
+  <button
+    class="d-lg-none p-0 m-0"
+    style="border: none; background: none; margin: 20px 10px"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasExample"
+    aria-controls="offcanvasExample"
+  >
+    <img src="list.svg" alt="" />
+  </button>
+
+  <p class="d-block d-md-none fs-5 fw-medium" style="color: #bf272d">
+    Dashboard
+  </p>
+
+  <img class="d-block d-md-none" src="./itiheader.svg" alt="" />
+</div>
 
 <div class="d-flex gap-lg-2">
   <app-side-bar></app-side-bar>
@@ -19,7 +27,7 @@
   <div class="m-1 m-lg-2 mt-lg-4 position-relative" style="flex: 1">
     <app-header></app-header>
     <router-outlet />
-    <p style="text-align: center; color: #d7777b" class="fw-medium col-12 mt-5">
+    <p style="text-align: center; color: #d7777b" class="fw-medium col-12  py-5">
       © 2025 ITI Freelancing Hub. All rights reserved.
     </p>
   </div>

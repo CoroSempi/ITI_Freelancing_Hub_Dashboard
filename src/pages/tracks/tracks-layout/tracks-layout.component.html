@@ -1,33 +1,33 @@
-<!-- TagName -->
-<div class="d-flex justify-content-start align-items-center gap-1">
-  <div class="tag">.</div>
-  <p class="fs-5 fw-semibold">Tracks</p>
+<div style="min-height: 80vh" class="col-12 p-2">
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
+    <div class="tag">.</div>
+    <p class="tagName fs-5 fw-semibold">Tracks</p>
+  </div>
+
+  <div class="d-flex align-items-center gap-3 mt-3">
+    <span
+      routerLink="/tracks/all"
+      (click)="setActive('allTracks')"
+      class="filter"
+      [ngClass]="{
+        actived: activeTab === 'allTracks'
+      }"
+    >
+      All Tracks
+    </span>
+
+    <span
+      routerLink="/tracks/add"
+      (click)="setActive('addNew')"
+      class="filter"
+      [ngClass]="{
+        'actived ': activeTab === 'addNew'
+      }"
+    >
+      Add New
+    </span>
+  </div>
+
+  <router-outlet></router-outlet>
 </div>
-
-<div class="d-flex align-items-center gap-3 mt-3">
-  <span
-    routerLink="/tracks/all"
-    (click)="setActive('allTracks')"
-    [ngClass]="{
-      'filter actived': activeTab === 'allTracks',
-      'filter ': activeTab !== 'allTracks'
-    }"
-    class="px-3 py-2 rounded-pill"
-  >
-    All Tracks
-  </span>
-
-  <span
-    routerLink="/tracks/add"
-    (click)="setActive('addNew')"
-    [ngClass]="{
-      'filter actived ': activeTab === 'addNew',
-      'filter ': activeTab !== 'addNew'
-    }"
-    class="px-3 py-2 rounded-pill"
-  >
-    Add New
-  </span>
-</div>
-
-<router-outlet></router-outlet>

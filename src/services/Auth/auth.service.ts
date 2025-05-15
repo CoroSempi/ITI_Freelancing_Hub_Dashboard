@@ -78,4 +78,15 @@ export class AuthService {
       headers,
     });
   }
+
+  checkToken(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
+    });
+
+    return this.http.get<any>(this.baseUrl + '/checkToken', {
+      headers,
+    });
+  }
 }

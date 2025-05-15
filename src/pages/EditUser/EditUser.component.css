@@ -1,39 +1,35 @@
 .triangle-left {
-	width: 0;
-	height: 0;
-	border-top: 13px solid transparent;
-	border-right: 20px solid #BF272D;
-	border-bottom: 13px solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 20px solid #bf272d;
+  border-bottom: 13px solid transparent;
 }
-  .track-wrapper {
-    display: flex;
-    align-items: center; 
-    padding: 8px 16px;
-    width: fit-content;
-    gap: 5px;
-  }
-  .track-text {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 22px;
-    color: #000000; 
-  }
-  .name {
-    font-weight: 600;
-    color: #A7A5A5;
-    font-size: 16px;
-  }
-  .divider {
-    width: 2px;
-    height: 20px;
-    background-color: #BF272D;
-    display: inline-block;
-    border-radius: 1px;
-  }
-  .update_btn{
-    
-    width: 200px;
-   margin: 80px auto;
 
-  }
-  
+.track-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  color: #000000;
+}
+.name {
+  font-weight: 600;
+  color: #a7a5a5;
+  font-size: 16px;
+}
+.divider {
+  width: 2px;
+  height: 20px;
+  background-color: #bf272d;
+  display: inline-block;
+  border-radius: 1px;
+}
+.update_btn {
+  width: 200px;
+  margin: 80px auto;
+}
+
+.form-control {
+  height: 55px;
+  border-radius: 15px;
+}

@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../../services/notifications/notification.service';
+import ITICourses from '../tracks/addnew/ITICourses';
 
 @Component({
   selector: 'app-broad-casting',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './broad-casting.component.html',
-  styleUrls: ['./broad-casting.component.css']
+  styleUrls: ['./broad-casting.component.css'],
 })
 export class BroadCastingComponent {
-  selectedTrack: string = 'Front End and Cross Platform Mobile Development';
+  itiTracks: string[] = ITICourses;
+  selectedTrack: string = this.itiTracks[0];
   notificationTitle: string = '';
   notificationContent: string = '';
   isLoading: boolean = false;
@@ -23,9 +25,6 @@ export class BroadCastingComponent {
   selectTrack(track: string): void {
     this.selectedTrack = track;
   }
-  private getTrackNameForAPI(displayTrackName: string): string {
-    return "Front End and Cross Platform Mobile Development";
-  }
 
   sendBroadcastNotification(): void {
     this.errorMessage = '';
@@ -36,26 +35,29 @@ export class BroadCastingComponent {
       return;
     }
     this.isLoading = true;
-    
-    const apiTrackName = this.getTrackNameForAPI(this.selectedTrack);
-    
-    this.notificationService.sendBroadcastNotification(
-      this.notificationContent,
-      apiTrackName
-    ).subscribe({
-      next: (response) => {
-        this.isLoading = false;
-        this.successMessage = 'Broadcast notification sent successfully!';
-        this.resetForm();
-      },
-      error: (error) => {
-        console.error('Error sending broadcast notification:', error);
 
-        this.isLoading = false;
-        this.successMessage = 'Broadcast notification sent successfully!';
-        this.resetForm();
-      }
-    });
+    this.notificationService
+      .sendBroadcastNotification(
+        this.notificationTitle,
+        this.notificationContent,
+        this.selectedTrack
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          this.isLoading = false;
+          this.successMessage = 'Broadcast notification sent successfully!';
+          this.errorMessage = '';
+          this.resetForm();
+        },
+        error: (error) => {
+          console.error('Error sending broadcast notification:', error);
+          this.isLoading = false;
+          this.errorMessage = error.error.message;
+          this.successMessage = '';
+          this.resetForm();
+        },
+      });
   }
   resetForm(): void {
     this.notificationContent = '';

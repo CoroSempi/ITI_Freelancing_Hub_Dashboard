@@ -1,54 +1,81 @@
-<div
-  class="job-container"
-  *ngFor="let job of jobs; let i = index"
-  [ngClass]="{
-    'pending-job': !job.verified,
-    'accepted-job': job.verified
-  }"
->
-  <div class="job-header">
-    <h2>{{ job.jobTitle }}</h2>
-    <a [routerLink]="['/job-details', job._id]" class="view-details" [state]="{ returnTo: currentUrl }">View</a>
+<div class="col-12 d-flex flex-column">
+  <div
+    class="job-container flex-grow-1"
+    *ngFor="let job of jobs; let i = index"
+    [ngClass]="{
+      'pending-job': !job.verified,
+      'accepted-job': job.verified
+    }"
+  >
+    <img
+      class="job-status-img"
+      [src]="job.verified ? 'accept.svg ' : 'pend.svg'"
+      alt="2f2"
+    />
+    <div class="job-header">
+      <p class="tagName fw-semibold">{{ job.jobTitle }}</p>
+      <a
+        [routerLink]="['/job-details', job._id]"
+        class="view-details"
+        [state]="{ returnTo: currentUrl }"
+        >View</a
+      >
+    </div>
+
+    <h6>{{ job.jobType }}</h6>
+    <p class="description">{{ job.jobDescription }}</p>
 
     <div
-      class="view-image"
-      [ngStyle]="{
-        'background-image': job.verified ? 'url(accept.svg) ' : 'url(pend.svg)'
-      }"
-    ></div>
-  </div>
+      *ngIf="job.teamMembers?.length > 0 || !job.companytName"
+      class="d-flex gap-2"
+    >
+      <p class="fw-semibold">Contributors :</p>
+      <span *ngFor="let std of job.teamMembers; let i = index">
+        {{ std.studentName
+        }}<span *ngIf="i < job.teamMembers.length - 1">, </span>
+      </span>
+    </div>
 
-  <h6>{{ job.jobType }}</h6>
-  <p class="description">{{ job.jobDescription }}</p>
-  <strong> Contributors : </strong>
-  <span *ngFor="let std of job.teamMembers; let i = index">
-    {{ std.studentName }}<span *ngIf="i < job.teamMembers.length - 1">, </span>
-  </span>
-  
+    <div *ngIf="job.companytName" class="d-flex gap-2">
+      <p class="fw-semibold">Copmany:</p>
+      <span>{{ job.companytName }}</span>
+    </div>
 
-  <div class="details">
-    <p>
-      <img src="date.svg" />
-      <strong> Start : </strong> {{ formatDate(job.startDate) }}
-      <span *ngIf="job.endDate" >
-    <img src="date.svg" />
-    <strong > Completion : </strong> {{ formatDate(job.endDate) }}
-  </span>
-    </p>
+    <div>
+      <div class="details">
+        <span
+          style="height: 16px"
+          class="gap-2 d-flex justify-content-center align-items-center"
+        >
+          <img class="" src="date.svg" />
 
-    <p>
-      <img src="usd.svg" />
-      {{ job.costInUSD || job.paymentInUSD }}
-      <img src="EGP.svg" />
-      {{ job.costInEGP || job.paymentInEGP }}
-    </p>
-  </div>
+          <span class="fw-semibold">Start :</span>
+          {{ formatDate(job.startDate) }}
+        </span>
 
-  <div class="contributor">
-    <div class="member-container">
+        <span
+          style="height: 16px"
+          class="gap-2 d-flex justify-content-center align-items-center"
+          *ngIf="job.endDate"
+        >
+          <img src="date.svg" />
+
+          <span class="fw-semibold">End :</span>
+          {{ formatDate(job.endDate) }}
+        </span>
+      </div>
+
+      <p>
+        <img src="usd.svg" />
+        {{ job.costInUSD || job.paymentInUSD }}
+        <img src="EGP.svg" />
+        {{ job.costInEGP || job.paymentInEGP }}
+      </p>
+    </div>
+
+    <div style="bottom: 10px; right: 10px" class="member-container contributor">
       <p>
         <img src="users.svg" />
-
         <strong>{{ getFirstTwoNames(job.studentName) }}</strong>
       </p>
     </div>

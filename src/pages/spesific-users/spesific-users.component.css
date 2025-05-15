@@ -1,14 +1,15 @@
 .specific-users-container {
   padding: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .search-input {
   padding: 12px 45px;
   border-radius: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   font-size: 16px;
   width: 100%;
+  min-height: 100% !important;
 }
 
 .search-results {
@@ -51,19 +52,19 @@
 .divider {
   width: 2px;
   height: 20px;
-  background-color: #BF272D;
+  background-color: #bf272d;
   margin: 0 12px;
   border-radius: 1px;
 }
 
 .instruction-text {
-  color: #A7A5A5;
+  color: #a7a5a5;
   font-size: 14px;
   line-height: 1.5;
 }
 
 .empty-selection {
-  color: #A7A5A5;
+  color: #a7a5a5;
   font-style: italic;
 }
 
@@ -75,7 +76,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: white;
   padding: 12px 15px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -83,10 +84,10 @@
 }
 
 .remove {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: #BF272D;
+  background-color: #bf272d;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,7 +113,7 @@
 }
 
 .submit {
-  background-color: #BF272D;
+  background-color: #2E2E2E;
   color: white;
   font-weight: 500;
   width: 151px;
@@ -122,11 +123,10 @@
 }
 
 .submit:hover:not([disabled]) {
-  background-color: #b31919;
+  background-color: #545353;
 }
 
 .submit:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
-

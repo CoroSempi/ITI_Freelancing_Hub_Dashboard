@@ -1,0 +1,123 @@
+<div class="col-12 p-2">
+  <!-- Spinner while loading -->
+  <div *ngIf="isLoading" class="text-center my-5">
+    <div class="spinner-border text-dark" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- top Desktop -->
+  <div *ngIf="!isLoading && cer">
+    <div
+      class="d-none mb-2 d-sm-flex align-items-center gap-2 justify-content-start"
+    >
+      <img class="clickable" (click)="back()" src="Rectangle 7.svg" />
+      <p class="fs-5 fw-semibold">{{ cer.Company + "'s Certificate" }}</p>
+      <img width="3px" height="25px" src="sep2.svg" />
+
+      <p style="color: #d7777b" class="fw-medium fs-6">{{ cer.approach }}</p>
+
+      <p class="status {{ cer.verified ? 'accepted' : '' }}">
+        {{ cer.verified ? "Accepted" : "Pending" }}
+      </p>
+    </div>
+
+    <!-- top phone -->
+    <div class="d-block d-sm-none">
+      <div class="d-flex justify-content-between align-items-center">
+        <p style="color: #bf272d" (click)="back()" class="fs-5 fw-semibold">
+          Back
+        </p>
+
+        <p class="status {{ cer.verified ? 'accepted' : '' }}">
+          {{ cer.verified ? "Accepted" : "Pending" }}
+        </p>
+      </div>
+      <br />
+      <div
+        class="mb-2 d-flex flex-column align-items-start gap-1 justify-content-center"
+      >
+        <p class="fs-5 fw-semibold">{{ cer.Company + "'s Certificate" }}</p>
+
+        <p style="color: #d7777b" class="fw-medium fs-6">{{ cer.approach }}</p>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="item mb-3" *ngIf="cer.studentName">
+      <img
+        width="90px"
+        height="90px"
+        style="border-radius: 50%"
+        [src]="avatar ? avatar : 'avatar.svg'"
+        alt="avatar"
+      />
+      <div class="text">
+        <p class="fw-semibold fs-5">
+          {{ getFirstTwoNames(cer.studentName) }}
+        </p>
+        <p
+          style="color: #d7777b"
+          class="fs-6 fw-medium clickable"
+          (click)="openChat()"
+        >
+          Send Message
+        </p>
+      </div>
+    </div>
+
+    <div class="data">
+      <p class="mb-3 fs-6" style="color: #a7a5a5">
+        {{ cer.certificateDescription }}
+      </p>
+      <p class="fs-6 fw-medium">
+        <span class="fs-6 fw-semibold text-black spanName"
+          >Certificate ID :
+        </span>
+        {{ cer.certificateId }}
+      </p>
+
+      <p class="fs-6 fw-medium" *ngIf="cer.proofOfCertificate">
+        <span class="fs-6 fw-semibold text-black">Proof of work : </span>
+        <a class="spanName" href="{{ cer.proofOfCertificate }}">Drive Link</a>
+        <img src="ms.svg" class="mx-2" />
+      </p>
+
+      <div class="d-flex flex-column gap-3">
+        <div
+          class="fs-6 fw-medium flex-column flex-sm-row d-flex align-items-sm-center gap-1 gap-sm-5"
+        >
+          <span>
+            <img src="date.svg" />
+            <span class="fs-6 fw-semibold text-black"> Start : </span>
+            {{ formatDate(cer.startDate) }}
+          </span>
+          <span *ngIf="cer.endDate">
+            <img src="date.svg" />
+            <span class="fs-6 fw-semibold text-black"> End : </span>
+            {{ formatDate(cer.endDate) }}
+          </span>
+        </div>
+      </div>
+
+      <div class="d-flex gap-1 gap-sm-3 my-3">
+        <button
+          type="button"
+          class="btn btn-dark custom-btn flex-grow-1"
+          *ngIf="cer?.verified === false"
+          (click)="acceptJob()"
+        >
+          Accept
+        </button>
+        <button
+          type="button"
+          (click)="deleteCertificate(cer._id)"
+          class="btn btn-outline-danger custom-btn flex-grow-1"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { ChatsService } from '../services/Chats/Chats.service';
+import { AuthService } from '../services/Auth/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private chatsService: ChatsService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   canActivate(): boolean {
     const token = localStorage.getItem('AccessToken');
@@ -19,8 +19,9 @@ export class AuthGuard implements CanActivate {
   }
 
   private isTokenValid(token: string): boolean {
-    this.chatsService.getAllChats().subscribe(
+    this.authService.checkToken().subscribe(
       (response) => {
+        console.log(response);
         return true;
       },
       (error) => {

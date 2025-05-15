@@ -1,5 +1,4 @@
 .profile-badge {
-  width: 1350px;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -13,6 +12,15 @@
   align-items: center;
 }
 
+.sep {
+  width: 10px;
+  max-width: 10px;
+  min-width: 10px;
+  height: 20px;
+  max-height: 20px;
+  min-height: 20px;
+}
+
 .user-info {
   display: flex;
   align-items: center;
@@ -24,14 +32,6 @@
   font-weight: 600;
   color: #333333;
   font-size: 16px;
-}
-
-.divider {
-  width: 2px;
-  height: 20px;
-  background-color: #bf272d;
-  display: inline-block;
-  border-radius: 1px;
 }
 
 .role {
@@ -50,23 +50,19 @@
   gap: 15px;
 }
 
-.status-badge {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
+.pass {
+  font-size: 12px;
+  font-weight: 550;
+  background-color: rgba(68, 180, 13, 0.15) !important;
+  color: #44b40d !important;
 }
 
-.status-badge.pass {
-  background-color: #e6f7e6;
-  color: #28a745;
+.NotYet {
+  font-size: 12px;
+  font-weight: 550;
+  background-color: rgba(191, 39, 45, 0.15) !important;
+  color: #bf272d !important;
 }
-
-.status-badge.NotYet {
-  background-color: #fde9e4;
-  color: #bf272d;
-}
-
 
 .edit-button {
   background: none;
@@ -84,18 +80,9 @@
   background-color: #f0f0f0;
 }
 
-.triangle-left {
-  width: 0;
-  height: 0;
-  border-top: 13px solid transparent;
-  border-right: 20px solid #bf272d;
-  border-bottom: 13px solid transparent;
-}
-
 .track-wrapper {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
   width: fit-content;
   gap: 5px;
 }
@@ -126,20 +113,6 @@
   color: #5c6480;
   width: 158px;
 }
-/* loader */
-
-.loader-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 1000;
-}
 
 .spinner-border {
   width: 4rem;
@@ -148,5 +121,42 @@
 }
 
 .spinner-border.text-primary {
-  color: #BF272D !important; 
+  color: #bf272d !important;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bf272d;
+  padding: 5px 20px;
+  border-radius: 20px;
+  color: #787777;
+  background-color: rgba(224, 224, 224, 0.6);
+  cursor: pointer;
+}
+
+.actived {
+  color: #bf272d;
+  font-weight: 650;
+  background-color: rgba(191, 39, 45, 0.3);
+}
+
+.backButton {
+  cursor: pointer;
+}
+
+.subTitle {
+  color: #a7a5a5;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.formButton {
+  color: #f6f6f6;
+  padding: 8px;
+  border-radius: 15px;
+  min-height: 55px;
+  font-weight: 500;
+  background-color: #2e2e2e;
 }

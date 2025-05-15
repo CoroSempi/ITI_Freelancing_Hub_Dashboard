@@ -1,38 +1,96 @@
 <div>
-  <p class="mt-4" style="color: #A7A5A5; font-family: Poppins;">Before sending any notifications to users, ensure that the message is free of spelling errors and <br>
-    utilizes clear, professional language. Double-check for proper grammar, tone, and formatting.<br> Remember, notifications represent our platform, so they should be polished and easy to<br>
-    understand to maintain our credibility and user trust.</p>
-    
-  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+  <p class="mt-4" style="color: #a7a5a5; font-family: Poppins">
+    Before sending any notifications to users, ensure that the message is free
+    of spelling errors and <br />
+    utilizes clear, professional language. Double-check for proper grammar,
+    tone, and formatting.<br />
+    Remember, notifications represent our platform, so they should be polished
+    and easy to<br />
+    understand to maintain our credibility and user trust.
+  </p>
+
+  <div
+    style="width: 100%; max-width: 600px"
+    *ngIf="successMessage"
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
     {{ successMessage }}
-    <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="successMessage = ''"
+    ></button>
   </div>
-  
-  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+
+  <div
+    style="width: 100%; max-width: 600px"
+    *ngIf="errorMessage"
+    class="alert alert-danger alert-dismissible fade show"
+    role="alert"
+  >
     {{ errorMessage }}
-    <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+    <button
+      type="button"
+      class="btn-close"
+      (click)="errorMessage = ''"
+    ></button>
   </div>
-  
-  <div class="container mt-4 col-lg-12" style="width:1350px; height: 48px;">
-    <div class="dropdown">
-      <button class="btn dropdown-toggle w-100 d-flex justify-content-between align-items-center"
-        style="background-color: #BF272D; color: white;"
-        type="button" id="developmentDropdown"
+
+  <div class="mt-3" style="width: 100%; max-width: 600px">
+    <div style="max-width: 100%" class="dropdown">
+      <button
+        class="btn dropdown-toggle d-flex justify-content-between align-items-center"
+        style="
+          height: 50px;
+          width: 100%;
+          max-width: 600px;
+          background-color: #bf272d;
+          color: white;
+        "
+        type="button"
+        id="developmentDropdown"
         data-bs-toggle="dropdown"
-        aria-expanded="false">
-        <span>{{ selectedTrack }} <small class="ms-2"></small></span>
+        aria-expanded="false"
+      >
+        <span class="d-none d-sm-block">
+          {{selectedTrack}}
+          <small class="ms-2"></small
+        ></span>
+        <span class="d-block d-sm-none"
+          >{{
+            selectedTrack.split(" ")[0] + " " + selectedTrack.split(" ")[1]
+          }}
+          <small class="ms-2"></small
+        ></span>
       </button>
-      <ul class="dropdown-menu w-100" aria-labelledby="developmentDropdown">
-        <li><a class="dropdown-item" (click)="selectTrack('Front End and Cross Platform Mobile Development')" href="javascript:void(0)">Front End and Cross Platform Mobile Development</a></li>
-        <li><a class="dropdown-item" (click)="selectTrack('Web Development')" href="javascript:void(0)">Web Development</a></li>
-        <li><a class="dropdown-item" (click)="selectTrack('Mobile Development')" href="javascript:void(0)">Mobile Development</a></li>
-        <li><a class="dropdown-item" (click)="selectTrack('Flutter')" href="javascript:void(0)">Flutter</a></li>
-        <li><a class="dropdown-item" (click)="selectTrack('React Native')" href="javascript:void(0)">React Native</a></li>
+      <ul
+        style="max-height: 300px; overflow: auto"
+        class="dropdown-menu w-100"
+        aria-labelledby="developmentDropdown"
+      >
+        @for (item of itiTracks; track $index) {
+
+        <li (click)="selectTrack(item)" class="dropdown-item d-block d-sm-none">
+          {{
+            item.split(" ")[0] +
+              " " +
+              item.split(" ")[1] +
+              " " +
+              item.split(" ")[2]
+          }}
+        </li>
+
+        <li (click)="selectTrack(item)" class="dropdown-item d-none d-sm-block">
+          {{ item }}
+        </li>
+
+        }
       </ul>
     </div>
   </div>
-  
-  <div class="gap-1 mt-4">
+
+  <div style="width: 100%; max-width: 600px" class="gap-1 mt-4">
     <input
       class="form-control write-something"
       type="text"
@@ -40,8 +98,8 @@
       [(ngModel)]="notificationTitle"
     />
   </div>
-  
-  <div class="gap-1 mt-4">
+
+  <div style="width: 100%; max-width: 600px" class="gap-1 mt-2">
     <input
       class="form-control write-something"
       type="text"
@@ -49,11 +107,13 @@
       [(ngModel)]="notificationContent"
     />
   </div>
-  
-  <button 
-    class="btn btn-dark mx-auto d-block mt-4 w-50" 
+
+  <button
+    style="width: 100%; max-width: 600px; height: 50px; border-radius: 15px"
+    class="btn btn-dark mt-4"
     (click)="sendBroadcastNotification()"
-    [disabled]="isLoading || !notificationContent.trim()">
-    {{ isLoading ? 'Sending...' : 'Submit' }}
+    [disabled]="isLoading || !notificationContent.trim()"
+  >
+    {{ isLoading ? "Sending..." : "Submit" }}
   </button>
 </div>

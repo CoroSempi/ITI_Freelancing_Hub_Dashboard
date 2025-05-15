@@ -30,6 +30,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   toUserPage(id: string): void {
-    this.nav.navigate(['userDetails/' + id]);
+    this.nav.navigate(['editUser/' + id]);
   }
 }

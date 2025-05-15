@@ -1,0 +1,51 @@
+<div class="col-12 flex-column d-flex gap-4">
+  <div
+    class="cer-container mx-auto"
+    *ngFor="let cer of certificates; let i = index"
+  >
+    <img
+      style="position: absolute; left: 0px; top: 0px"
+      [src]="cer.verified ? 'green.svg ' : 'grey.svg'"
+    />
+
+    <img
+      [style]="cer.verified ? { opacity: '0.4' } : {}"
+      style="position: absolute; right: 10px; bottom: 10px"
+      [src]="cer.verified ? 'doneCer.svg ' : 'pendCer.svg'"
+    />
+    <a [routerLink]="['/certificate-details', cer._id]" class="view-details"
+      >View</a
+    >
+    <div class="cer-header">
+      <p class="tagName fw-semibold text-center">
+        {{ cer.Company + "'s Certificate" }}
+      </p>
+    </div>
+
+    <h6>{{ getFirstTwoNames(cer.studentName) }}</h6>
+    <p class="description">{{ cer.certificateDescription }}</p>
+
+    <div>
+      <div class="details">
+        <span
+          style="height: 16px"
+          class="gap-2 d-flex justify-content-center align-items-center"
+        >
+          <img class="" src="date.svg" />
+
+          {{ formatDate(cer.startDate) }}
+        </span>
+
+        <span
+          style="height: 16px"
+          class="gap-2 d-flex justify-content-center align-items-center"
+          *ngIf="cer.endDate"
+        >
+          <img src="date.svg" />
+
+          {{ formatDate(cer.endDate) }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

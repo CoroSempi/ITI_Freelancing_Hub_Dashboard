@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -9,26 +9,30 @@ import {
 } from '@angular/forms';
 import { EditUserService } from '../../services/editUser/editUser.service';
 
-
 import { TracksService } from '../../services/Tracks/alltracks.service';
+import { CommonModule, Location } from '@angular/common';
+import ITICourses from '../tracks/addnew/ITICourses';
 
 @Component({
   selector: 'app-EditUser',
   templateUrl: './EditUser.component.html',
   styleUrls: ['./EditUser.component.css'],
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule],
 })
 export class EditUserComponent implements OnInit {
   userForm!: FormGroup;
   userId!: string;
-  fullName: string = '';
-  trackName: string = '';
-
+  user!: any;
+  isLoading: boolean = false;
+  itiTracks: any[] = ITICourses;
+  selectedTrack!: string;
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private editUserService: EditUserService,
-    // private trackService: TracksService
+    private location: Location,
+    private trackService: TracksService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,26 +48,16 @@ export class EditUserComponent implements OnInit {
       ],
       university: ['', Validators.required],
       personalID: ['', [Validators.required, Validators.pattern(/^\d{14}$/)]],
-      track: ['', Validators.required],
+      trackName: ['', Validators.required],
     });
 
-    const trackId = '6805b41e38a05b42192e69d0';
-
-    this.editUserService.getUsersByTrack(trackId).subscribe((res) => {
-      const allUsers = res || [];
-
+    this.editUserService.getUserById(this.userId).subscribe((res) => {
       console.log('this is res', res);
+      this.user = res;
+      const user = res;
 
-      const user = allUsers.find((u: any) => u._id === this.userId);
-
-      console.log('all users', allUsers);
-
+      this.selectedTrack = user.trackName;
       if (user) {
-        console.log('my User found:', user);
-
-        this.fullName = user.fullName;
-        this.trackName = user.trackName || 'Front End & cross platform';
-
         this.userForm.patchValue({
           fullName: user.fullName,
           grade: user.graduationGrade,
@@ -72,7 +66,16 @@ export class EditUserComponent implements OnInit {
           phone: user.phone,
           university: user.university,
           personalID: user.personalID,
-          track: user.trackName || user.track,
+          trackName: user.trackName,
+        });
+
+        this.trackService.getAllTracks().subscribe((res) => {
+          console.log('this is res', res);
+          this.itiTracks = res.filter((track: any) =>
+            this.itiTracks.includes(track.trackName)
+          );
+
+          this.itiTracks = this.itiTracks.map((track: any) => track.trackName);
         });
       } else {
         console.log('User not found:', user);
@@ -81,20 +84,27 @@ export class EditUserComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Submit clicked!');
-
     const updatedUser = this.userForm.value;
-    console.log('Form data:', updatedUser);
 
     this.editUserService.updateUserById(this.userId, updatedUser).subscribe({
       next: (res) => {
         console.log('User updated successfully', res);
-        alert('updated successfully');
+        this.router.navigate(['users']);
       },
       error: (err) => {
         console.error('Error updating user:', err);
-        alert('Error occurred');
       },
     });
+  }
+
+  selectTrack(track: string) {
+    this.selectedTrack = track;
+    this.userForm.patchValue({
+      trackName: track,
+    });
+  }
+
+  back(): void {
+    this.location.back();
   }
 }

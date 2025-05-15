@@ -1,16 +1,23 @@
-<div class="notification-wrapper">
-  <div class="red-shape"></div>
-  <span class="notification-text">Notifications</span>
-</div>
-<!-- /////////////////////////////////////////////////////////////////// -->
-<div
-  class="notification-wrapper-buttons d-flex"
-  style="gap: 20px; margin-top: 20px">
-  <a routerLink="spesificUsers"  routerLinkActive="active"><button class="btn specificUsers">specific Users</button></a>  
-  <a routerLink="broadCasting"  routerLinkActive="active"><button class="btn Broadcasting">Broadcasting</button></a>
-</div>
-<!-- <button  class="btn specificUsers">specific Users</button>
-<button class="btn Broadcasting">Broadcasting</button> -->
-<!-- //////////////////////////////////////////////////////////////////////// -->
+<div class="col-12 p-2">
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
+    <div class="tag">.</div>
+    <p class="tagName fs-5 fw-semibold">Notifications</p>
+  </div>
 
-<router-outlet></router-outlet>
+  <!-- /////////////////////////////////////////////////////////////////// -->
+
+  <div class="d-flex gap-3 mb-3">
+    <a class="filter" routerLink="spesificUsers" routerLinkActive="actived"
+      >specific Users</a
+    >
+    <a class="filter" routerLink="broadCasting" routerLinkActive="actived"
+      >Broadcasting</a
+    >
+  </div>
+  <!-- <button  class="btn specificUsers">specific Users</button>
+<button class="btn Broadcasting">Broadcasting</button> -->
+  <!-- //////////////////////////////////////////////////////////////////////// -->
+
+  <router-outlet></router-outlet>
+</div>

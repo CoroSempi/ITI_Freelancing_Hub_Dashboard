@@ -1,21 +1,67 @@
 <div class="col-12 d-flex flex-column align-items-start justify-content-start">
   <form [formGroup]="addTrackForm" (ngSubmit)="onSubmit()">
     <div class="column mt-4 g-3">
-      <div class="fw-normal text-dark mb-3">Track Name</div>
-      <select
-        class="form-select  "
-        id="trackName"
-        formControlName="trackName"
-      >
-        <option value="" disabled>Select a track</option>
-        @for (item of allTracks; track $index) {
-        <option value="{{ item }}">
-          {{ item }}
-        </option>
-        }
-      </select>
+      <div class="fw-semibold fs-6 mb-2">Track Name</div>
+      <div class="mt-3" style="width: 100%; max-width: 600px">
+        <div style="max-width: 100%" class="dropdown">
+          <button
+            class="btn dropdown-toggle d-flex justify-content-between align-items-center"
+            style="
+              height: 50px;
+              width: 100%;
+              max-width: 600px;
+              background-color: #bf272d;
+              color: white;
+            "
+            type="button"
+            id="developmentDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="d-none d-sm-block">
+              {{ selectedTrack }}
+              <small class="ms-2"></small
+            ></span>
+            <span class="d-block d-sm-none"
+              >{{
+                selectedTrack.split(" ")[0] + " " + selectedTrack.split(" ")[1]
+              }}
+              <small class="ms-2"></small
+            ></span>
+          </button>
+          <ul
+            style="max-height: 300px; overflow: auto"
+            class="dropdown-menu w-100"
+            aria-labelledby="developmentDropdown"
+          >
+            @for (item of itiTracks; track $index) {
 
-      <div class="fw-normal  mt-3 mb-3">Track Date</div>
+            <li
+              (click)="selectTrack(item)"
+              class="dropdown-item d-block d-sm-none"
+            >
+              {{
+                item.split(" ")[0] +
+                  " " +
+                  item.split(" ")[1] +
+                  " " +
+                  item.split(" ")[2]
+              }}
+            </li>
+
+            <li
+              (click)="selectTrack(item)"
+              class="dropdown-item d-none d-sm-block"
+            >
+              {{ item }}
+            </li>
+
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="fw-semibold fs-6 my-2 mt-4">Start Date</div>
       <input
         type="date"
         class="form-control"
@@ -24,54 +70,75 @@
         placeholder="Enter track date"
       />
 
-      <div class="fw-600 text-dark mt-3 fs-15 ">Students Data</div>
+      <div class="fw-semibold fs-6 my-2 mt-4">Students Data</div>
       <div class="d-flex align-items-center gap-3 mt-3">
-    
-         <div class="fw-normal text-secondary ">
-          No Uploaded File
-         </div>
- <input
-type="file"
-id="sheet"
-(change)="onFileSelected($event)"
-formControlName="sheet"
-accept=".xlsx"
-style="display: none"
-/>
+        <div class="fw-normal text-secondary">{{ fileName }}</div>
+        <input
+          type="file"
+          id="sheet"
+          (change)="onFileSelected($event)"
+          formControlName="sheet"
+          accept=".xlsx"
+          style="display: none"
+        />
 
-
-<label for="sheet" style="cursor: pointer;">
-<img
-  src="upload.svg"
-  alt="upload"
-  class="img-fluid"
-  style="width: 20px; height: 20px;"
-/>
-</label>
-
+        <label for="sheet" style="cursor: pointer">
+          <img
+            src="upload.svg"
+            alt="upload"
+            class="img-fluid"
+            style="width: 20px; height: 20px"
+          />
+        </label>
       </div>
 
       <div class="d-flex align-items-center gap-3 mt-3">
-        <div class="fw-normal text-secondary mt-3 ">
-          Please ensure that you upload the required Excel file in the <br> .xlsx
-          format to complete your submission correctly.
+        <div class="fw-normal text-secondary mt-3">
+          Please ensure that you upload the required Excel file in the <br />
+          .xlsx format to complete your submission correctly.
         </div>
       </div>
-      <div class=" formButton d-flex align-items-center gap-3 mt-3">
+
+      <div
+        style="width: 100%; max-width: 600px"
+        *ngIf="successMessage"
+        class="alert alert-success alert-dismissible fade show"
+        role="alert"
+      >
+        {{ successMessage }}
         <button
-        class="formButton btn bg-dark text-white fw-600 fill-rounded-4"
+          type="button"
+          class="btn-close"
+          (click)="successMessage = ''"
+        ></button>
+      </div>
+
+      <div
+        style="width: 100%; max-width: 600px"
+        *ngIf="errorMessage"
+        class="alert alert-danger alert-dismissible fade show"
+        role="alert"
+      >
+        {{ errorMessage }}
+        <button
+          type="button"
+          class="btn-close"
+          (click)="errorMessage = ''"
+        ></button>
+      </div>
+
+      <button
+        style="width: 100%; max-width: 600px; height: 50px; border-radius: 15px"
+        class="my-3 btn bg-dark text-white"
         [disabled]="addTrackForm.invalid || loading"
       >
         @if (loading) {
-  
+
         <div class="spinner-border text-danger" role="status">
           <span id="submit" class="sr-only">Loading...</span>
         </div>
         }@else{ Submit }
       </button>
-      
-     
-      </div>
     </div>
   </form>
 </div>

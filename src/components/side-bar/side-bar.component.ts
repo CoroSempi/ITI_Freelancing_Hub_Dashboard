@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ChatsService } from '../../services/Chats/Chats.service';
+import { JobsService } from '../../services/Jobs/jobs.service';
+import { CertificatesService } from '../../services/Certificates/certificates.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,11 +12,25 @@ import { ChatsService } from '../../services/Chats/Chats.service';
 })
 export class SideBarComponent implements OnInit {
   unreadChat: number = 0;
-  constructor(private chatsService: ChatsService) {}
+  unseenRequests: number = 0;
+  unseenCertificates: number = 0;
+  constructor(
+    private chatsService: ChatsService,
+    private jobService: JobsService,
+    private certificatesService: CertificatesService
+  ) {}
 
   ngOnInit(): void {
     this.chatsService.unreadCount$.subscribe((count) => {
       this.unreadChat = count;
+    });
+
+    this.jobService.unseenRequests$.subscribe((count) => {
+      this.unseenRequests = count;
+    });
+
+    this.certificatesService.unseenCertificates$.subscribe((count) => {
+      this.unseenCertificates = count;
     });
   }
 

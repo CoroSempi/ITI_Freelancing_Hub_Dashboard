@@ -11,6 +11,10 @@ export class ChatsService {
   private unreadCountSubject = new BehaviorSubject<number>(0);
   unreadCount$ = this.unreadCountSubject.asObservable();
 
+  setUnseenRequests(count: number) {
+    this.unreadCountSubject.next(count);
+  }
+
   constructor(private http: HttpClient) {
     this.updateUnreadCount();
   }

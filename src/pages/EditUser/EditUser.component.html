@@ -1,60 +1,164 @@
-<div class="track-wrapper">
-    <div class="triangle-left"></div>
-    <span class="track-text">{{ fullName }}</span>
-    <span class="divider"></span>
-    <span class="name">{{ trackName }}</span>
+<div class="col-12 p-2">
+  @if (!user) {
+  <div
+    style="min-height: 200px"
+    class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+  >
+    <div class="spinner-border text-danger" role="status"></div>
+    <p class="text-secondary">Loading</p>
   </div>
-  
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="row mt-5">
-      <div class="row mb-3">
-        <div class="col-md-6 mb-3 mb-md-0">
-          <label for="fullName" class="form-label">Full Name</label>
-          <input type="text" class="form-control" formControlName="fullName" />
+
+  }@else {
+
+  <!-- top Desktop -->
+  <div
+    class="d-none d-lg-flex align-items-center gap-2 justify-content-start mb-4"
+  >
+    <img class="clickable" (click)="back()" src="Rectangle 7.svg" />
+    <p class="fs-5 fw-semibold">{{ user.fullName }}</p>
+    <img width="3px" height="25px" src="sep2.svg" />
+
+    <p style="color: #d7777b" class="fw-medium fs-6">{{ user.trackName }}</p>
+  </div>
+
+  <!-- top phone -->
+  <div class="d-block d-lg-none">
+    <div class="d-flex justify-content-between align-items-center">
+      <p
+        style="color: #bf272d"
+        (click)="back()"
+        class="fs-5 fw-semibold clickable"
+      >
+        Back
+      </p>
+    </div>
+    <br />
+    <div
+      class="mb-2 d-flex flex-column align-items-start gap-1 justify-content-center"
+    >
+      <p class="fs-5 fw-semibold">{{ user.fullName }}</p>
+
+      <p style="color: #d7777b" class="fw-medium fs-6">
+        {{ user.trackName }}
+      </p>
+    </div>
+  </div>
+
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    class="col-12 mt-2 d-flex flex-column justify-content-between align-items-center"
+  >
+    <div class="row mb-3 gap-2 col-12">
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="fullName" class="form-label fw-semibold">Full Name</label>
+        <input type="text" class="form-control" formControlName="fullName" />
+      </div>
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="grade" class="form-label fw-semibold">G.Grade</label>
+        <input type="text" class="form-control" formControlName="grade" />
+      </div>
+
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="email" class="form-label fw-semibold">Email</label>
+        <input type="email" class="form-control" formControlName="email" />
+      </div>
+
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="faculty" class="form-label fw-semibold">Faculty</label>
+        <input type="text" class="form-control" formControlName="faculty" />
+      </div>
+
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="mobile" class="form-label fw-semibold">Mobile</label>
+        <input type="tel" class="form-control" formControlName="phone" />
+      </div>
+
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="university" class="form-label fw-semibold"
+          >University</label
+        >
+        <input type="text" class="form-control" formControlName="university" />
+      </div>
+
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="personalID" class="form-label fw-semibold"
+          >Personal ID</label
+        >
+        <input type="text" class="form-control" formControlName="personalID" />
+      </div>
+
+      <div class="col-md-5 flex-grow-1 mb-3 p-0">
+        <label for="track" class="form-label fw-semibold">Track</label>
+        <div
+          style="min-width: 100%; border-radius: 15px !important"
+          class="dropdown"
+        >
+          <button
+            class="flex-grow-1 btn dropdown-toggle d-flex justify-content-between align-items-center"
+            style="
+              border-radius: 10px;
+              height: 50px;
+              width: 100%;
+              background-color: #bf272d;
+              color: white;
+            "
+            type="button"
+            id="developmentDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <span class="d-none d-sm-block">
+              {{ selectedTrack }}
+              <small class="ms-2"></small
+            ></span>
+            <span class="d-block d-sm-none"
+              >{{
+                selectedTrack.split(" ")[0] + " " + selectedTrack.split(" ")[1]
+              }}
+              <small class="ms-2"></small
+            ></span>
+          </button>
+          <ul
+            style="max-height: 300px; overflow: auto"
+            class="dropdown-menu w-100"
+            aria-labelledby="developmentDropdown"
+          >
+            @for (item of itiTracks; track $index) {
+
+            <li
+              (click)="selectTrack(item)"
+              class="dropdown-item d-block d-sm-none"
+            >
+              {{
+                item.split(" ")[0] +
+                  " " +
+                  item.split(" ")[1] +
+                  " " +
+                  item.split(" ")[2]
+              }}
+            </li>
+
+            <li
+              (click)="selectTrack(item)"
+              class="dropdown-item d-none d-sm-block"
+            >
+              {{ item }}
+            </li>
+
+            }
+          </ul>
         </div>
-        <div class="col-md-6">
-          <label for="grade" class="form-label">G.Grade</label>
-          <input type="text" class="form-control" formControlName="grade" />
-        </div>
       </div>
-  
-      <div class="row mb-3">
-          <div class="col-md-6 mb-3 mb-md-0">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" formControlName="email">
-          </div>
-          <div class="col-md-6">
-              <label for="faculty" class="form-label">Faculty</label>
-              <input type="text" class="form-control" formControlName="faculty">
-          </div>
-      </div>
-  
-      <div class="row mb-3">
-          <div class="col-md-6 mb-3 mb-md-0">
-              <label for="mobile" class="form-label">Mobile</label>
-              <input type="tel" class="form-control" formControlName="phone">
-          </div>
-          <div class="col-md-6">
-              <label for="university" class="form-label">University</label>
-              <input type="text" class="form-control" formControlName="university">
-          </div>
-      </div>
-  
-      <div class="row mb-3">
-          <div class="col-md-6 mb-3 mb-md-0">
-              <label for="personalID" class="form-label">Personal ID</label>
-              <input type="text" class="form-control" formControlName="personalID">
-          </div>
-          <div class="col-md-6 mb-3 mb-md-0">
-            <label for="track" class="form-label">Track</label>
-            <select class="form-select track-select" formControlName="track" style="background-color: #BF272D;color: aliceblue;">
-              <option>{{ trackName }}</option>
-              <option>Front End and Cross Platform Mobile Development</option>
-              <option>Backend Development</option>
-              <option>Full Stack Development</option>
-              <option>UI/UX Design</option>
-            </select>
-          </div>
-      </div>
-  
-      <button type="submit" class="btn btn-dark  update_btn" >Update</button>
-    </form>
+    </div>
+
+    <button
+      style="border: none; height: 55px; border-radius: 15px"
+      type="submit"
+      class="col-12 col-md-6 text-bg-dark"
+    >
+      Update
+    </button>
+  </form>
+  }
+</div>

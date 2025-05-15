@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AllJobsService } from '../../services/AllJobs/all-jobs.service';
 import { ShowJobsComponent } from '../../components/show-jobs/show-jobs.component';
 import { CommonModule } from '@angular/common';
+import { JobsService } from '../../services/Jobs/jobs.service';
 
 @Component({
   selector: 'app-requests',
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [ShowJobsComponent, CommonModule],
 })
 export class RequestsComponent implements OnInit {
-  constructor(private jobsService: AllJobsService) {}
+  constructor(private jobsService: JobsService) {}
 
   allJobs: any[] = [];
   jobs: any[] = [];
@@ -22,16 +22,20 @@ export class RequestsComponent implements OnInit {
   pages: number[] = [];
   isLoading: boolean = false;
 
+
   ngOnInit(): void {
     this.getJobs();
   }
 
   getJobs(): void {
     this.isLoading = true;
-    this.jobsService.getAllJobs('dashboard/jobs').subscribe({
+    this.jobsService.getAllJobs().subscribe({
       next: (data) => {
         this.allJobs = data;
         this.applyFilter();
+        const count = this.allJobs.filter((req: any) => !req.verified).length;
+        this.jobsService.setUnseenRequests(count);
+
         this.isLoading = false;
       },
       error: (error) => {

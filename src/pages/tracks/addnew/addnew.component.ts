@@ -19,8 +19,13 @@ import { TracksService } from '../../../services/Tracks/alltracks.service';
 export class AddnewComponent implements OnInit {
   addTrackForm: FormGroup = new FormGroup({});
   selectedFile: File | null = null;
-  allTracks: any[] = ITICourses;
+  itiTracks: any[] = ITICourses;
   loading: boolean = false;
+  fileName: string = 'No Uploaded File';
+  errorMessage: string = '';
+  successMessage: string = '';
+
+  selectedTrack: string = this.itiTracks[0];
 
   constructor(private fb: FormBuilder, private TracksService: TracksService) {}
 
@@ -40,6 +45,7 @@ export class AddnewComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
+      this.fileName = this.selectedFile.name;
     }
   }
   onSubmit(): void {
@@ -56,9 +62,14 @@ export class AddnewComponent implements OnInit {
       this.TracksService.addTrack(formData).subscribe(
         (response) => {
           this.loading = false;
+          this.successMessage = 'Track added successfully!';
+          this.errorMessage = '';
           console.log('Track added successfully:', response);
         },
         (error) => {
+          this.loading = false;
+          this.errorMessage = error.error.message;
+          this.successMessage = '';
           console.error('Error adding track:', error);
         }
       );
@@ -66,5 +77,10 @@ export class AddnewComponent implements OnInit {
       this.loading = false;
       console.error('Form is invalid');
     }
+  }
+
+  selectTrack(track: string): void {
+    this.selectedTrack = track;
+    this.addTrackForm.get('trackName')?.setValue(track);
   }
 }

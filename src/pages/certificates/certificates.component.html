@@ -1,0 +1,107 @@
+@if (loading) {
+
+<div>
+  <div
+    style="min-height: 200px"
+    class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+  >
+    <div class="spinner-border text-danger" role="status"></div>
+    <p class="text-secondary">Loading</p>
+  </div>
+</div>
+}@else if(certificates.length === 0) {
+
+<div>
+  <div
+    style="min-height: 200px"
+    class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+  >
+    <p class="text-secondary">No Certificates Yet</p>
+  </div>
+</div>
+
+}@else {
+
+<div *ngIf="certificates.length > 0" class="col-12 p-2 bg">
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
+    <div class="tag">.</div>
+    <p class="tagName fs-5 fw-semibold">Certificates</p>
+  </div>
+
+  <!-- Filter Section -->
+  <div class="d-flex gap-3 mb-3">
+    <span
+      (click)="handleFilter('All')"
+      [ngClass]="{ actived: filter === 'All' }"
+      class="filter"
+      >All</span
+    >
+    <span
+      (click)="handleFilter('Pending')"
+      [ngClass]="{ actived: filter === 'Pending' }"
+      class="filter"
+      >Pending</span
+    >
+    <span
+      (click)="handleFilter('Approved')"
+      [ngClass]="{ actived: filter === 'Approved' }"
+      class="filter"
+      >Approved</span
+    >
+  </div>
+
+  <div class="col-12 flex-column d-flex gap-4">
+    <div
+      class="cer-container mx-auto col-12"
+      *ngFor="let cer of certificates; let i = index"
+    >
+      <img
+        style="position: absolute; left: 0px; top: 0px"
+        [src]="cer.verified ? 'green.svg ' : 'grey.svg'"
+      />
+
+      <img
+        [style]="cer.verified ? { opacity: '0.4' } : {}"
+        style="position: absolute; right: 10px; bottom: 10px"
+        [src]="cer.verified ? 'doneCer.svg ' : 'pendCer.svg'"
+      />
+      <a [routerLink]="['/certificate-details', cer._id]" class="view-details"
+        >View</a
+      >
+      <div class="cer-header">
+        <p class="tagName fw-semibold text-center">
+          {{ cer.Company + "'s Certificate" }}
+        </p>
+      </div>
+
+      <h6>{{ getFirstTwoNames(cer.studentName) }}</h6>
+      <p class="description">{{ cer.certificateDescription }}</p>
+
+      <div>
+        <div class="details">
+          <span
+            style="height: 16px"
+            class="gap-2 d-flex justify-content-center align-items-center"
+          >
+            <img class="" src="date.svg" />
+
+            {{ formatDate(cer.startDate) }}
+          </span>
+
+          <span
+            style="height: 16px"
+            class="gap-2 d-flex justify-content-center align-items-center"
+            *ngIf="cer.endDate"
+          >
+            <img src="date.svg" />
+
+            {{ formatDate(cer.endDate) }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+}

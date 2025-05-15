@@ -1,9 +1,8 @@
-<div class="container">
-
+<div class="col-12 p-2">
   <!-- TagName -->
-  <div class="d-flex justify-content-start align-items-center gap-1 mb-2">
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
     <div class="tag">.</div>
-    <p class="fs-5 fw-semibold">Round Analytics</p>
+    <p class="tagName fs-5 fw-semibold">Round Analytics</p>
   </div>
 
   <!-- Cards or Loader -->
@@ -16,15 +15,16 @@
     </div>
   </ng-template>
 
+  <br />
   <!-- TagName -->
-  <div class="d-flex justify-content-start align-items-center gap-1 mb-2">
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
     <div class="tag">.</div>
-    <p class="fs-5 fw-semibold">Latest Requests</p>
+    <p class="tagName fs-5 fw-semibold">Latest Requests</p>
   </div>
 
   <!-- Jobs or Loader -->
   <ng-container *ngIf="!isLoadingJobs; else jobsLoader">
-    <app-show-jobs [jobs]="jobs"></app-show-jobs>
+    <app-show-jobs [jobs]="jobs.slice(0, 4)"></app-show-jobs>
   </ng-container>
   <ng-template #jobsLoader>
     <div class="text-center my-4">
@@ -32,4 +32,20 @@
     </div>
   </ng-template>
 
+  <br />
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
+    <div class="tag">.</div>
+    <p class="tagName fs-5 fw-semibold">Latest Certificates</p>
+  </div>
+  <ng-container *ngIf="!isLoadingJobs; else jobsLoader">
+    <app-show-certificates
+      [certificates]="certificates.slice(0, 3)"
+    ></app-show-certificates>
+  </ng-container>
+  <ng-template #jobsLoader>
+    <div class="text-center my-4">
+      <div class="spinner-border text-danger" role="status"></div>
+    </div> </ng-template
+  >>
 </div>

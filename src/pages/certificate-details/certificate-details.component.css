@@ -1,0 +1,100 @@
+.status {
+    background-color: rgba(165, 165, 175, 0.2);
+    color: #a6a5a5;
+    border: 0.5px solid #a6a5a5;
+    padding: 5px 16px;
+    margin-left: 8px;
+    border-radius: 50px;
+    font-size: 14px;
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+  }
+  
+  .status.accepted {
+    font-weight: 600;
+    background-color: rgba(68, 189, 13, 0.2);
+    border: 0.5px solid #44b40d;
+    color: #44b40d;
+  }
+  
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  
+  .data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .custom-btn {
+    padding: 10px 20px;
+    max-width: 250px;
+    height: 45px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  .overflow-container {
+    width: 100%;
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .comments {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+  }
+  .AddComment {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .comment-input {
+    flex: 1;
+    border-radius: 10px;
+  
+    height: 50px;
+  }
+  
+  .rate-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .rate-input {
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+  }
+  
+  span {
+    color: #a7a5a5;
+  }
+  .spanName {
+    color: #d7777b;
+    font-weight: normal;
+    transition: all 0.5s;
+  }
+  
+  .spanName:hover {
+    color: #bf272d;
+    font-weight: 600;
+  }
+  
