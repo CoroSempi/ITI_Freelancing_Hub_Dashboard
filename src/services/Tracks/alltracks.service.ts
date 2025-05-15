@@ -31,7 +31,7 @@ export class TracksService {
       'Content-Type': 'application/json',
       authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
     });
-    console.log(this.baseUrl + '/Track/' + id);
+
     return this.http.delete<any>(this.baseUrl + '/Track/' + id, {
       headers,
     });

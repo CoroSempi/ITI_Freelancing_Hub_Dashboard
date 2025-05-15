@@ -116,12 +116,11 @@ export class HomeComponent implements OnInit {
   getCrtificates(): void {
     this.certificatesService.getAllCertificates().subscribe({
       next: (data) => {
-        console.log(data);
         this.certificates = data;
         const count = this.certificates.filter(
           (req: any) => !req.verified
         ).length;
-        console.log(count);
+
         this.certificatesService.setUnseenCertificates(count);
         this.isLoadingJobs = false;
       },

@@ -35,7 +35,6 @@ export class TracksAllComponent implements OnInit {
   }
 
   goToTrack(trackId: any, trackName: any): void {
-    console.log(trackId);
     this.router.navigate([`/track/${trackId}/${trackName}`]);
   }
 }

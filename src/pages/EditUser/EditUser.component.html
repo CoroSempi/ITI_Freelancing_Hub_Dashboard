@@ -151,12 +151,17 @@
         </div>
       </div>
     </div>
-
+    <p class="text-success py-2">
+      {{ msg }}
+    </p>
     <button
+      [disabled]="isLoading"
       style="border: none; height: 55px; border-radius: 15px"
       type="submit"
-      class="col-12 col-md-6 text-bg-dark"
+      class="col-12 col-md-6"
+      [ngClass]="isLoading ? 'text-bg-secondary' : 'text-bg-dark'"
     >
+      <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
       Update
     </button>
   </form>

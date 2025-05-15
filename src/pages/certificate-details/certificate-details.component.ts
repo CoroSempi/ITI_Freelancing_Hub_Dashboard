@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { JobsService } from '../../services/Jobs/jobs.service';
 import { CertificatesService } from '../../services/Certificates/certificates.service';
 
 @Component({
@@ -52,11 +51,9 @@ export class CertificateDetailsComponent implements OnInit {
 
     if (this.firstTime) {
       this.isLoading = true;
-      console.log('Loading Certificate details...');
     }
     this.certificatesService.getCertificateById(this.id).subscribe(
       (response) => {
-        console.log('Certificate details:', response);
         this.avatar = response.avatar;
         this.cer = response.certificate;
         this.isLoading = false;
@@ -73,7 +70,6 @@ export class CertificateDetailsComponent implements OnInit {
 
     this.certificatesService.deleteCertificateById(id).subscribe(
       () => {
-        console.log('Certificate deleted successfully');
         this.back();
       },
       (error) => {
@@ -91,7 +87,6 @@ export class CertificateDetailsComponent implements OnInit {
 
     this.certificatesService.acceptCertificate(this.id).subscribe(
       (response) => {
-        console.log('Certificate verified successfully:', response);
         this.cer.verified = true;
       },
       (error) => {

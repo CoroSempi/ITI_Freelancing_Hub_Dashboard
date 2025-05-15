@@ -48,11 +48,11 @@ export class AddnewComponent implements OnInit {
       this.fileName = this.selectedFile.name;
     }
   }
+
   onSubmit(): void {
     this.loading = true;
-    console.log('clicked');
+
     if (this.addTrackForm.valid) {
-      console.log('clicked2');
       const trackData = this.addTrackForm.value;
       const formData = new FormData();
       formData.append('trackName', trackData.trackName);
@@ -64,7 +64,6 @@ export class AddnewComponent implements OnInit {
           this.loading = false;
           this.successMessage = 'Track added successfully!';
           this.errorMessage = '';
-          console.log('Track added successfully:', response);
         },
         (error) => {
           this.loading = false;

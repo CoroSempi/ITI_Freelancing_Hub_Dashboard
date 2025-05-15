@@ -26,6 +26,7 @@ export class EditUserComponent implements OnInit {
   isLoading: boolean = false;
   itiTracks: any[] = ITICourses;
   selectedTrack!: string;
+  msg: string = '';
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
@@ -52,7 +53,6 @@ export class EditUserComponent implements OnInit {
     });
 
     this.editUserService.getUserById(this.userId).subscribe((res) => {
-      console.log('this is res', res);
       this.user = res;
       const user = res;
 
@@ -70,7 +70,6 @@ export class EditUserComponent implements OnInit {
         });
 
         this.trackService.getAllTracks().subscribe((res) => {
-          console.log('this is res', res);
           this.itiTracks = res.filter((track: any) =>
             this.itiTracks.includes(track.trackName)
           );
@@ -85,13 +84,18 @@ export class EditUserComponent implements OnInit {
 
   onSubmit() {
     const updatedUser = this.userForm.value;
-
+    this.isLoading = true;
     this.editUserService.updateUserById(this.userId, updatedUser).subscribe({
       next: (res) => {
-        console.log('User updated successfully', res);
-        this.router.navigate(['users']);
+        this.isLoading = false;
+        this.msg = 'User updated successfully';
+        setTimeout(() => {
+          this.msg = '';
+        }, 2000);
       },
+
       error: (err) => {
+        this.isLoading = false;
         console.error('Error updating user:', err);
       },
     });

@@ -52,18 +52,17 @@ export class JobDetailsComponent implements OnInit {
 
     if (this.firstTime) {
       this.isLoading = true;
-      console.log('Loading job details...');
     }
     this.allJobsService.getJobById(this.id).subscribe(
       (response) => {
         this.avatar = response.avatar;
         this.job =
           response.directJob || response.remoteJob || response.platformJob;
-        this.isLoading = false; // ✅ Stop loading
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching job details:', error);
-        this.isLoading = false; // ✅ Stop loading on error
+        this.isLoading = false;
       }
     );
   }
@@ -73,7 +72,6 @@ export class JobDetailsComponent implements OnInit {
 
     this.allJobsService.deleteJobById(id).subscribe(
       () => {
-        console.log('Job deleted successfully');
         this.back();
       },
       (error) => {
@@ -92,7 +90,6 @@ export class JobDetailsComponent implements OnInit {
     const updateData = { verified: true };
     this.allJobsService.acceptJob(this.id, updateData).subscribe(
       (response) => {
-        console.log('Job verified successfully:', response);
         this.job.verified = true;
       },
       (error) => {
@@ -109,7 +106,6 @@ export class JobDetailsComponent implements OnInit {
 
     this.allJobsService.addCommentToJob(this.id, commentData).subscribe({
       next: (res) => {
-        console.log('Comment added:', res);
         this.getJobDetails();
         this.commentText = '';
         this.rate = 0;
@@ -123,7 +119,6 @@ export class JobDetailsComponent implements OnInit {
   deleteComment(id: string) {
     this.allJobsService.deleteComment(this.id, id).subscribe({
       next: (res) => {
-        console.log('Comment deleted:', res);
         this.getJobDetails();
       },
       error: (err) => {

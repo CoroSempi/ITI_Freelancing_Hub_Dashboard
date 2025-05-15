@@ -74,7 +74,6 @@ export class SpesificUsersComponent implements OnInit {
       .sendSpecificNotification(notificationTitle, notificationContent, userIds)
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.selectedUsers = [];
           this.messageInput.setValue('');
           this.titleInput.setValue('');

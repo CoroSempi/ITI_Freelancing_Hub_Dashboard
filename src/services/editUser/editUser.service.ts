@@ -21,7 +21,6 @@ export class EditUserService {
   }
 
   updateUserById(userId: string, userData: any): Observable<any> {
-    console.log('User data:', userData);
     const headers = new HttpHeaders({
       authorization: `Bearer ${localStorage.getItem('AccessToken')}`,
     });

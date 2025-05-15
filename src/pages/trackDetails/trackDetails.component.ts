@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+
 import {
   ActivatedRoute,
   Router,
   RouterLink,
   RouterLinkActive,
 } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Add this for ngIf
+import { CommonModule } from '@angular/common';
 import { TracksService } from '../../services/Tracks/alltracks.service';
 
 @Component({
@@ -79,7 +79,6 @@ export class TrackDetailsComponent implements OnInit {
   deleteTrack() {
     this.trackService.deleteTrack(this.trackID).subscribe(
       (res) => {
-        console.log(res);
         this.router.navigate(['tracks']);
       },
       (error) => {

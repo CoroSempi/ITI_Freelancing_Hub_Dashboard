@@ -44,7 +44,6 @@ export class BroadCastingComponent {
       )
       .subscribe({
         next: (response) => {
-          console.log(response);
           this.isLoading = false;
           this.successMessage = 'Broadcast notification sent successfully!';
           this.errorMessage = '';

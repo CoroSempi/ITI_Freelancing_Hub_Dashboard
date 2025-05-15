@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CertificatesService } from '../../services/Certificates/certificates.service';
+
 import { CommonModule, DatePipe } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-show-certificates',
@@ -15,13 +15,7 @@ export class ShowCertificatesComponent implements OnInit {
 
   @Input() certificates: any[] = [];
 
-  constructor(
-    private datePipe: DatePipe,
-    private router: Router,
-    private certificatesService: CertificatesService
-  ) {
-    console.log(this.certificates);
-  }
+  constructor(private datePipe: DatePipe) {}
 
   ngOnInit() {}
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CertificatesService } from '../../services/Certificates/certificates.service';
 import { CommonModule, DatePipe } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-certificates',
@@ -24,7 +24,7 @@ export class CertificatesComponent implements OnInit {
 
   constructor(
     private datePipe: DatePipe,
-    private router: Router,
+
     private certificatesService: CertificatesService
   ) {}
 
@@ -41,7 +41,6 @@ export class CertificatesComponent implements OnInit {
         this.approvedCertificates = data.filter((cer: any) => cer.verified);
         this.pendingCertificates = data.filter((cer: any) => !cer.verified);
 
-        console.log(this.certificates);
         const count = this.certificates.filter(
           (cer: any) => !cer.verified
         ).length;

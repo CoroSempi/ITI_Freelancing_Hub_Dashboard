@@ -35,6 +35,7 @@
   overflow: hidden;
   gap: 5px;
   height: 250px;
+  min-width: 100%;
   max-width: 100%;
 }
 
