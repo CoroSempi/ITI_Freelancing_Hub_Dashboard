@@ -40,7 +40,7 @@ export class EditUserComponent implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('id')!;
     this.userForm = this.fb.group({
       fullName: ['', Validators.required],
-      grade: ['', Validators.required],
+      graduationGrade: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       faculty: ['', Validators.required],
       phone: [
@@ -60,7 +60,7 @@ export class EditUserComponent implements OnInit {
       if (user) {
         this.userForm.patchValue({
           fullName: user.fullName,
-          grade: user.graduationGrade,
+          graduationGrade: user.graduationGrade,
           email: user.email,
           faculty: user.faculty,
           phone: user.phone,

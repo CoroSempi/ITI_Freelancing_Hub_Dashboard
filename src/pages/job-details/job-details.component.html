@@ -130,7 +130,9 @@
 
       <p class="fs-6 fw-medium" *ngIf="job.proofOfWork">
         <span class="fs-6 fw-semibold text-black">Proof of work : </span>
-        <a class="spanName" href="{{ job.proofOfWork }}">Drive Link</a>
+        <a target="_blank" class="spanName" href="{{ job.proofOfWork }}"
+          >Drive Link</a
+        >
         <img src="ms.svg" class="mx-2" />
       </p>
 
@@ -277,17 +279,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -38,4 +38,6 @@ export class TracksLayoutComponent implements OnInit {
   setActive(tab: string): void {
     this.activeTab = tab;
   }
+
+  
 }

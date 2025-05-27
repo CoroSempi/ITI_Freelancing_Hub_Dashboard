@@ -21,6 +21,10 @@ import { EditUserComponent } from '../pages/EditUser/EditUser.component';
 import { NotificationsComponent } from '../pages/notifications/notifications.component';
 import { CertificatesComponent } from '../pages/certificates/certificates.component';
 import { CertificateDetailsComponent } from '../pages/certificate-details/certificate-details.component';
+import { ReportsComponent } from '../pages/reports/reports.component';
+import { StatusComponent } from '../pages/reports/status/status.component';
+import { FinalComponent } from '../pages/reports/final/final.component';
+import { EarningsComponent } from '../pages/reports/earnings/earnings.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
@@ -83,6 +87,19 @@ export const routes: Routes = [
     path: 'studentChat/:id',
     component: StudentChatComponent,
     canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'reports',
+    component: ReportsComponent,
+    canActivate: [AuthGuard],
+
+    children: [
+      { path: '', redirectTo: 'status', pathMatch: 'full' },
+      { path: 'status', component: StatusComponent },
+      { path: 'earnings', component: EarningsComponent },
+      { path: 'final', component: FinalComponent },
+    ],
   },
 
   {

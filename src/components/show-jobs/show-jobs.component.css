@@ -4,6 +4,9 @@
   position: relative;
   background-color: #ffffff;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h2 {
@@ -24,9 +27,13 @@ h6 {
   font-size: 15px;
   color: #a7a5a5;
   margin-bottom: 6px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  line-height: 1.6;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 20px;
+  text-overflow: ellipsis;
 }
 
 .details {

@@ -21,7 +21,7 @@
       style="height: 170px; cursor: pointer"
       (click)="goToTrack(track._id, track.trackName)"
       *ngFor="let track of tracks"
-      class="col-xl-5 flex-grow-1 flex-md-grow-0 card shadow-sm d-flex flex-column justify-content-between p-3 align-items-start "
+      class="col-xl-5 flex-grow-1 flex-md-grow-0 card shadow-sm d-flex flex-column justify-content-between p-3 align-items-start"
     >
       <h5 class="fs-6 fw-semibold text-dark">
         {{ track.trackName }}
@@ -45,7 +45,7 @@
         class="percentage position-absolute"
         [ngClass]="track.percentage >= 50 ? 'text-success' : 'text-danger'"
       >
-        {{ track.percentage }}%
+        {{ track.percentage.toFixed(0) }}%
       </div>
     </div>
   </div>

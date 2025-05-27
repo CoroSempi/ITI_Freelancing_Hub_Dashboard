@@ -82,6 +82,11 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/reports" routerLinkActive="active">
+          Reports
+        </a>
+      </li>
       <hr />
 
       <li class="nav-item">
@@ -201,6 +206,18 @@
           }
         </a>
       </li>
+
+      <li class="nav-item">
+        <a
+          data-bs-dismiss="offcanvas"
+          class="nav-link"
+          routerLink="/reports"
+          routerLinkActive="active"
+        >
+          Reports
+        </a>
+      </li>
+
       <li class="nav-item">
         <a
           class="nav-link"
@@ -211,6 +228,7 @@
           Settings
         </a>
       </li>
+
       <li (click)="logout()" class="nav-item">
         <a
           data-bs-dismiss="offcanvas"

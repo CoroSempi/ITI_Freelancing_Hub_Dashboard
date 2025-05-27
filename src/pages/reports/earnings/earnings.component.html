@@ -1,0 +1,153 @@
+@if(isLoading){
+<div class="text-center my-5">
+  <div class="spinner-border text-danger" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+}@else {
+<div>
+  <div class="row mt-2 g-3">
+    <!-- Dropdown 2 -->
+    <div class="col-12 col-xl-4">
+      <div class="dropdown w-100">
+        <button
+          class="btn dropdown-toggle d-flex justify-content-between align-items-center"
+          style="
+            height: 50px;
+            width: 100%;
+            background-color: #bf272d;
+            color: white;
+          "
+          type="button"
+          id="dropdown2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span> {{ selectedRound }}</span>
+        </button>
+        <ul
+          class="dropdown-menu w-100"
+          aria-labelledby="dropdown2"
+          style="max-height: 300px; overflow: auto"
+        >
+          @for (item of reportData.rounds; track $index) {
+          <li
+            (click)="selectRound(item)"
+            class="dropdown-item d-block d-sm-none"
+          >
+            {{
+              item.split(" ")[0] +
+                " " +
+                item.split(" ")[1] +
+                " " +
+                item.split(" ")[2]
+            }}
+          </li>
+          <li
+            (click)="selectRound(item)"
+            class="dropdown-item d-none d-sm-block"
+          >
+            {{ item }}
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+  <br />
+
+  <span (click)="generateReport()" class="fw-semibold fs-6 col-12 generate">
+    Generate Report
+  </span>
+
+  @if(notFound){
+  <div
+    style="min-height: 350px"
+    class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+  >
+    <p class="text-secondary">Data not Exist for this Query</p>
+  </div>
+  }@else{
+
+  <div
+    class="col-12 d-flex flex-column flex-md-row gap-2 justify-content-between mt-3 stat"
+  >
+    <div>
+      <span class="fw-semibold fs-6"> Round : </span>
+      <span class="fs-6 text-secondary"> {{ selectedRound }} </span>
+    </div>
+
+    <div>
+      <span class="fw-semibold fs-6">All ITI Branches</span>
+    </div>
+
+    <div class="d-flex align-items-center gap-1">
+      <span class="fw-semibold fs-6"> Total Earnings : </span>
+      <span class="fs-6 text-secondary d-flex align-items-center gap-1">
+        {{ report.totalprofit }}
+        <img height="20" src="./usd.svg" alt="" />
+      </span>
+    </div>
+  </div>
+
+  <!-- charts -->
+  <div
+    class="col-12 d-flex flex-column justify-content-center flex-xl-row justify-xl-content-between"
+  >
+    <div class="col-12 col-xl-6 d-flex flex-column align-items-center">
+      <ngx-charts-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="studentSData"
+      >
+      </ngx-charts-pie-chart>
+
+      <ul class="custom-legend d-flex flex-column flex-sm-row">
+        <li class="fs-6">
+          <span class="dot" style="background-color: #d94b52"></span>
+          Target Achievers
+        </li>
+        <li class="fs-6">
+          <span class="dot" style="background-color: #e77a7f"></span>
+          Not Yet
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-12 col-xl-6 d-flex flex-column align-items-center">
+      @if(report.direct == 0 && report.platform == 0 && report.remote == 0) {
+      <div
+        style="min-height: 350px"
+        class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+      >
+        <p class="text-secondary">No Jobs Yet</p>
+      </div>
+      }@else {
+
+      <ngx-charts-pie-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="jobTypeData"
+      >
+      </ngx-charts-pie-chart>
+      }
+
+      <ul class="custom-legend d-flex flex-column flex-sm-row">
+        <li class="fs-6">
+          <span class="dot" style="background-color: #d94b52"></span>
+          Direct Contact
+        </li>
+        <li class="fs-6">
+          <span class="dot" style="background-color: #e77a7f"></span>
+          Freelance Platform
+        </li>
+        <li class="fs-6">
+          <span class="dot" style="background-color: #f1b0b7"></span>
+          Remote Job
+        </li>
+      </ul>
+    </div>
+  </div>
+  }
+</div>
+}

@@ -1,4 +1,14 @@
 <div class="col-12 flex-column d-flex gap-4">
+  @if(certificates.length == 0){
+
+  <div
+    style="min-height: 200px"
+    class="col-12 d-flex flex-column gap-2 justify-content-center align-items-center"
+  >
+    <p class="text-secondary">No Certificates Yet</p>
+  </div>
+  }@else {
+
   <div
     class="cer-container mx-auto"
     *ngFor="let cer of certificates; let i = index"
@@ -48,4 +58,5 @@
       </div>
     </div>
   </div>
+  }
 </div>

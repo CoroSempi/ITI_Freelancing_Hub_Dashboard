@@ -1,0 +1,43 @@
+<div class="col-12 p-2">
+  <!-- TagName -->
+  <div class="d-flex justify-content-start align-items-center gap-1 mb-3">
+    <div class="tag">.</div>
+    <p class="tagName fs-5 fw-semibold">Reports</p>
+  </div>
+
+  <div class="d-flex align-items-center gap-3 mt-3">
+    <span
+      routerLink="/reports/status"
+      (click)="setActive('status')"
+      class="filter"
+      [ngClass]="{
+        actived: activeTab === 'status'
+      }"
+    >
+      Status
+    </span>
+
+    <span
+      routerLink="/reports/earnings"
+      (click)="setActive('earnings')"
+      class="filter"
+      [ngClass]="{
+        'actived ': activeTab === 'earnings'
+      }"
+    >
+      Earnings
+    </span>
+
+    <span
+      routerLink="/reports/final"
+      (click)="setActive('final')"
+      class="filter"
+      [ngClass]="{
+        'actived ': activeTab === 'final'
+      }"
+    >
+      Final
+    </span>
+  </div>
+  <router-outlet></router-outlet>
+</div>

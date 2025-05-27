@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ChatsService {
-  private baseUrl = 'https://iti-freelancing-hub-server.vercel.app/dashboard';
+  private baseUrl = ' https://iti-freelancing-hub-server.vercel.app/dashboard';
 
   private unreadCountSubject = new BehaviorSubject<number>(0);
   unreadCount$ = this.unreadCountSubject.asObservable();

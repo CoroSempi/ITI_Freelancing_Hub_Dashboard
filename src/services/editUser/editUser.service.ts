@@ -7,7 +7,7 @@ import { User } from '../../interfaces/User';
   providedIn: 'root',
 })
 export class EditUserService {
-  private baseUrl = 'https://iti-freelancing-hub-server.vercel.app/dashboard';
+  private baseUrl = ' https://iti-freelancing-hub-server.vercel.app/dashboard';
 
   constructor(private http: HttpClient) {}
 

@@ -1,0 +1,50 @@
+.generate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 15px 20px;
+  color: #bf272d;
+  font-weight: 650;
+  background-color: rgba(191, 39, 45, 0.3);
+  transition: all 0.5s;
+}
+
+.generate:hover {
+  background-color: rgba(227, 99, 104, 0.6);
+}
+
+.stat {
+  background-color: rgba(1, 1, 1, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.reportCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.prec {
+  font-size: 90px;
+  position: absolute;
+  font-weight: 600;
+  right: 10px;
+  bottom: 10px;
+  opacity: 0.2;
+}
+
+
+.green {
+    color: green !important;
+  }
+  
+  .red {
+    color: red !important;
+  }
