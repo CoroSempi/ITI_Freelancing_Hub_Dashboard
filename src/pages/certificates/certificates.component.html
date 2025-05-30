@@ -4,6 +4,28 @@
     <div class="tag">.</div>
     <p class="tagName fs-5 fw-semibold">Certificates</p>
   </div>
+
+  <!-- Filter Section -->
+  <div class="d-flex gap-3 mb-3">
+    <span
+      (click)="handleFilter('All')"
+      [ngClass]="{ actived: filter === 'All' }"
+      class="filter"
+      >All</span
+    >
+    <span
+      (click)="handleFilter('Pending')"
+      [ngClass]="{ actived: filter === 'Pending' }"
+      class="filter"
+      >Pending</span
+    >
+    <span
+      (click)="handleFilter('Approved')"
+      [ngClass]="{ actived: filter === 'Approved' }"
+      class="filter"
+      >Approved</span
+    >
+  </div>
   @if (loading) {
 
   <div>
@@ -27,28 +49,6 @@
   </div>
 
   }@else {
-
-  <!-- Filter Section -->
-  <div class="d-flex gap-3 mb-3">
-    <span
-      (click)="handleFilter('All')"
-      [ngClass]="{ actived: filter === 'All' }"
-      class="filter"
-      >All</span
-    >
-    <span
-      (click)="handleFilter('Pending')"
-      [ngClass]="{ actived: filter === 'Pending' }"
-      class="filter"
-      >Pending</span
-    >
-    <span
-      (click)="handleFilter('Approved')"
-      [ngClass]="{ actived: filter === 'Approved' }"
-      class="filter"
-      >Approved</span
-    >
-  </div>
 
   <div *ngIf="certificates.length > 0" class="col-12 flex-column d-flex gap-4">
     <div

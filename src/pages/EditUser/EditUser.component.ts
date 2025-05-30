@@ -37,7 +37,15 @@ export class EditUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.paramMap.get('id')!;
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.userId = id;
+        this.loadUserData(id);
+
+        console.log('User ID:', this.userId);
+      }
+    });
     this.userForm = this.fb.group({
       fullName: ['', Validators.required],
       graduationGrade: ['', Validators.required],
@@ -79,6 +87,26 @@ export class EditUserComponent implements OnInit {
       } else {
         console.log('User not found:', user);
       }
+    });
+  }
+
+  loadUserData(id: string): void {
+    this.editUserService.getUserById(id).subscribe((res) => {
+      this.user = res;
+      const user = res;
+
+      this.selectedTrack = user.trackName;
+
+      this.userForm.patchValue({
+        fullName: user.fullName,
+        graduationGrade: user.graduationGrade,
+        email: user.email,
+        faculty: user.faculty,
+        phone: user.phone,
+        university: user.university,
+        personalID: user.personalID,
+        trackName: user.trackName,
+      });
     });
   }
 

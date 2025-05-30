@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 })
 export class TracksService {
   private baseUrl = 'https://iti-freelancing-hub-server.vercel.app/dashboard';
-
   constructor(private http: HttpClient) {}
   getAllTracks(): Observable<any> {
     const headers = new HttpHeaders({

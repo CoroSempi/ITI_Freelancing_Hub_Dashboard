@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit {
   out(): void {
     setTimeout(() => {
       this.keyword = '';
-    }, 100);
+    }, 200);
   }
 
   toUserPage(id: string): void {
