@@ -17,7 +17,7 @@
   class="results-display"
 >
   @if (users.length>0) { @for (item of users; track $index) {
-  <span (click)="toUserPage(item._id)">{{ item.fullName }}</span>
+  <span style="cursor: pointer" (click)="toUserPage(item._id)">{{ item.fullName }}</span>
   } }@else {
   <div
     style="min-height: 200px"
